@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+
+\usepackage[catalan]{babel} % Language 
+\usepackage{fontspec}
+\usepackage[margin=2cm]{geometry}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+
+\title{\textsc{Pràctica 2}: Compressió de gasos a baixes pressions}
+\author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[
+    xlabel = Volum,
+    ylabel = Pressió,
+    ymajorgrids=true]
+\addplot[only marks, green, mark=halfcircle*, mark size=1pt, opacity=0.5] table [y=P, x=V, col sep=semicolon]{politropics_adiabatic.csv};
+\addlegendentry{Procés adiabàtic};
+\addplot[green, domain = 90:200] {96988*x^-1.292};
+\addlegendentry{$96988x^{-1.29}$};
+\addplot[only marks, red,  mark=halfcircle*, mark size=1pt, opacity=0.5] table [y=P, x=V, col sep=semicolon]{politropics_isotermic.csv};
+\addlegendentry{Procés isotèrmic};
+\addplot[red, domain = 90:200] {20748*x^-1};
+\addlegendentry{$20748x^{-1}$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+
+\end{tikzpicture}
+\end{center}
+
+\end{document}
