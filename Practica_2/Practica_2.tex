@@ -6,18 +6,36 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
 
-\title{\textsc{Pràctica 2}: Compressió de gasos a baixes pressions \\ \textsc{Laboratòri de Termodinàmica}}
+\title{\textsc{Laboratòri de Termodinàmica} \\ \textsc{Pràctica 2} \\ Compressió de gasos a baixes pressions \\
+    \large
+    Professor: Jose Luís \\ Grup: 11 }
 \author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
-\date{}
+\date{26-9-2016}
 
 \begin{document}
 \maketitle
 
-L'objectiu d'aquesta pràctica ha estat el de poder comprovar les relacions termodinàmiques PVT 
+L'objectiu d'aquesta pràctica ha estat el de poder estudiar un gas ideal en dieferents processos de compressió. Per aquests processos s'ha determinat el coeficient politròpic $n$. 
+
+
+\subsection*{Processos politròpics}
+
+S'han realitzat dos assajos un en un procés adiabàtic (prova 1) i l'altre en un procés isotèrmic (prova 2). Per a cada assaig s'han obtingut les dades i també s'ha obtingut la recta d'interpolació d'aquestes dades ($ax^b$), a partir d'aquest exponent $b$ s'ha obtingut el coeficient politròpic (on $n = -b$).
+
+\begin{tabular}{c|ccccccccc}
+    Prova & $V_1$ $(cm^3)$ & $T_1$ $(K)$ & $P_1$ $(kPA)$ & $V_2$ $(cm^3)$ & $T_2$ $(K)$ & $P_2$ $(kPA)$ & $n$ & $W(J)$ & $Q(J)$ \\
+    \hline
+    1 & 198,53 & 300 & 103,258 & 90,336 & 381 & 381,604 & 1,29 & & \\
+    2 & 198,692 & 300 & 102,719 & 90,498 & 302 & 228,262 & 1 & &  
+\end{tabular}
+
+En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes en els dos assajos anteriors i també s'hi ha afegit la funció d'interpolació usada.
 
 \begin{center}
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}[scale=1]
 \begin{axis}[
     title = Assaig adiabàtic i isotèrmic,
     xlabel = Volum ($cm^3$),
@@ -47,8 +65,10 @@ L'objectiu d'aquesta pràctica ha estat el de poder comprovar les relacions term
 \end{tikzpicture}
 \end{center}
 
+\subsection*{Cicle d'Otto invers}
+
 \begin{center}
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}[scale=1]
 \begin{axis}[
     title = Cicle d'Otto invers,
     xlabel = Volum ($cm^3$),
@@ -73,5 +93,37 @@ L'objectiu d'aquesta pràctica ha estat el de poder comprovar les relacions term
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
+\begin{tabular}{c|cccc}
+    & Estat 1 & Estat 2 & Estat 3 & Estat 4 \\
+    \hline
+    $P(kPa)$ & & & & \\
+    $V(cm^3)$ & & & & \\
+    $T(K)$ & & & & \\
+\end{tabular}
+
+\begin{tabular}{c|cccccc}
+    Cicle & $Q_H(J)$ & $Q_L(J)$ & $W_{exp}(J)$ & $W_{comp}(J)$ & $COP_{MF}$ & $COP_{BC}$ \\
+    \hline
+    Real & & & & & & \\
+    Ideal & & & & & &
+\end{tabular}
+
+\subsection*{Cicle d'Otto invers modificat}
+
+\begin{tabular}{c|cccc}
+    & Estat 1 & Estat 2 & Estat 3 & Estat 4 \\
+    \hline
+    $P(kPa)$ & & & & \\
+    $V(cm^3)$ & & & & \\
+    $T(K)$ & & & & \\
+\end{tabular}
+
+\begin{tabular}{c|cccccc}
+    Cicle & $Q_H(J)$ & $Q_L(J)$ & $W_{exp}(J)$ & $W_{comp}(J)$ & $COP_{MF}$ & $COP_{BC}$ \\
+    \hline
+    Real & & & & & & \\
+    Ideal & & & & & &
+\end{tabular}
 
 \end{document}
