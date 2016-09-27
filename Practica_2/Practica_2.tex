@@ -7,23 +7,39 @@
 \usepackage{pgfplotstable}
 
 
-\title{\textsc{Pràctica 2}: Compressió de gasos a baixes pressions}
+\title{\textsc{Pràctica 2}: Compressió de gasos a baixes pressions \\ \textsc{Laboratòri de Termodinàmica}}
 \author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
 \date{}
 
 \begin{document}
 \maketitle
+
+L'objectiu d'aquesta pràctica ha estat el de poder comprovar les relacions termodinàmiques PVT 
+
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
 \begin{axis}[
-    xlabel = Volum,
-    ylabel = Pressió,
+    title = Assaig adiabàtic i isotèrmic,
+    xlabel = Volum ($cm^3$),
+    ylabel = Pressió ($kPa$),
     ymajorgrids=true]
-\addplot[only marks, green, mark=halfcircle*, mark size=1pt, opacity=0.5] table [y=P, x=V, col sep=semicolon]{politropics_adiabatic.csv};
+\addplot[
+    only marks, 
+    green, 
+    mark=halfcircle*, 
+    mark size=1pt, 
+    opacity=0.5] 
+    table [y=P, x=V, col sep=semicolon]{politropics_adiabatic.csv};
 \addlegendentry{Procés adiabàtic};
 \addplot[green, domain = 90:200] {96988*x^-1.292};
 \addlegendentry{$96988x^{-1.29}$};
-\addplot[only marks, red,  mark=halfcircle*, mark size=1pt, opacity=0.5] table [y=P, x=V, col sep=semicolon]{politropics_isotermic.csv};
+\addplot[
+    only marks, 
+    red,  
+    mark=halfcircle*, 
+    mark size=1pt, 
+    opacity=0.5] 
+    table [y=P, x=V, col sep=semicolon]{politropics_isotermic.csv};
 \addlegendentry{Procés isotèrmic};
 \addplot[red, domain = 90:200] {20748*x^-1};
 \addlegendentry{$20748x^{-1}$};
@@ -33,7 +49,28 @@
 
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
-
+\begin{axis}[
+    title = Cicle d'Otto invers,
+    xlabel = Volum ($cm^3$),
+    ylabel = Pressió ($kPa$),
+    ymajorgrids=true]
+\addplot[
+    only marks, 
+    green, 
+    mark=halfcircle*, 
+    mark size = 1pt, 
+    opacity=0.5] 
+    table [y=P, x=V, col sep=semicolon]{otto_invers.csv};
+\addlegendentry{Cicle d'Otto gas real};
+\addplot[
+    only marks, 
+    red, 
+    mark=halfcircle*, 
+    mark size = 1pt, 
+    opacity=0.5] 
+    table [y=P2, x=V, col sep=semicolon]{otto_invers.csv};
+\addlegendentry{Cicle d'Otto gas ideal};
+\end{axis}
 \end{tikzpicture}
 \end{center}
 
