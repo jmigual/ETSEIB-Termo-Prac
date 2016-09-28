@@ -9,7 +9,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 
-\title{\textsc{Laboratòri de Termodinàmica} \\ \textsc{Pràctica 2} \\ Compressió de gasos a baixes pressions \\
+\title{\textsc{Laboratori de Termodinàmica} \\ \textsc{Pràctica 2} \\ Compressió de gasos a baixes pressions \\
     \large
     Professor: Jose Luís \\ Grup: 11 }
 \author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
@@ -18,19 +18,37 @@
 \begin{document}
 \maketitle
 
-L'objectiu d'aquesta pràctica ha estat el de poder estudiar un gas ideal en dieferents processos de compressió. Per aquests processos s'ha determinat el coeficient politròpic $n$. 
+\section*{Objectius}
 
+L'objectiu d'aquesta pràctica és estudiar el comportament d'un gas ideal en diferents processos de compressió. Per aquests processos es determinarà el coeficient politròpic $n$ i, amb l'ajuda del balanç d'energia el treball i la calor intercanviats, es comprovarà experimentalment l'equació d'estat tèrmica d'un gas ideal. 
+
+També, s'estudiarà el cicle termodinàmic, denominat d'Otto invers, que funcionant amb un gas ideal permet actuar com a bomba de calor o màquina frigorífica. S'analitzarà també una modificació del cicle d'Otto invers on l'etapa de compressió es realitza isotèrmicament.
+
+S'utilitzarà un cilindre-pistó transparent amb un braç per poder realitzar les compressions i expansions dels gasos continguts a l'interior. El dispositiu té tres sensors que permeten la mesura simultània de pressió, volum i temperatura.
+
+\section*{Obtenció i presentació de resultats}
 
 \subsection*{Processos politròpics}
 
-S'han realitzat dos assajos un en un procés adiabàtic (prova 1) i l'altre en un procés isotèrmic (prova 2). Per a cada assaig s'han obtingut les dades i també s'ha obtingut la recta d'interpolació d'aquestes dades ($ax^b$), a partir d'aquest exponent $b$ s'ha obtingut el coeficient politròpic (on $n = -b$).
+\textbf{1. Presenteu una taula que contingui la informació experimental i calculada següent:}
 
+S'han realitzat dos assajos un en un procés adiabàtic (prova 1) i l'altre en un procés isotèrmic (prova 2). Per a cada assaig s'han obtingut les dades i també s'ha obtingut la recta d'interpolació d'aquestes dades ($ax^b$), a partir d'aquest exponent $b$ s'ha obtingut el coeficient politròpic (on $n = -b$).
+\begin{center}
 \begin{tabular}{c|ccccccccc}
     Prova & $V_1$ $(cm^3)$ & $T_1$ $(K)$ & $P_1$ $(kPA)$ & $V_2$ $(cm^3)$ & $T_2$ $(K)$ & $P_2$ $(kPA)$ & $n$ & $W(J)$ & $Q(J)$ \\
     \hline
-    1 & 198,53 & 300 & 103,258 & 90,336 & 381 & 381,604 & 1,29 & & \\
+    1 & 198,53 & 300 & 103,258 & 90,336 & 381 & 381,604 & 1,29 & 18,133 & -4,9866 \\
     2 & 198,692 & 300 & 102,719 & 90,498 & 302 & 228,262 & 1 & &  
 \end{tabular}
+\end{center}
+
+\textbf{2. Compareu el valor del coeficient politròpic de l’experiència de compressió més ràpida, amb el coeficient isentròpic de l’aire (k=1,4). Discutiu el valor obtingut i les possibles diferències entre els coeficients experimental i teòric.}
+
+Com es pot veure a la taula anterior, el valor obtingut ($1.29$) ha estat inferior al valor esperat ($1.4$). Això pot ser degut a diferents factors.
+
+El principal factor que pot haver provocat aquest fet és que és impossible fer una compressió totalment adiabàtica ja que sempre hi haurà pèrdues de calor per les parets del recipient i això provocarà una disminució de la temperatura no desitjada. També, ja que hi ha pèrdua de calor per les parets, si la compressió no es realitza prou ràpid aquest fenomen s'accentua.
+
+\textbf{3. En un diagrama pressió-volum, representeu tots el processos de compressió realitzats. Relacioneu les àrees existents sota les gràfiques amb els valors dels treballs de les diferents experiències.}
 
 En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes en els dos assajos anteriors i també s'hi ha afegit la funció d'interpolació usada.
 
@@ -52,7 +70,7 @@ En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes
 \addplot[green, domain = 90:200] {96988*x^-1.292};
 \addlegendentry{$96988x^{-1.29}$};
 \addplot[
-    only marks, 
+    only marks,
     red,  
     mark=halfcircle*, 
     mark size=1pt, 
