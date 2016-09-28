@@ -38,9 +38,13 @@ S'han realitzat dos assajos un en un procés adiabàtic (prova 1) i l'altre en u
     Prova & $V_1$ $(cm^3)$ & $T_1$ $(K)$ & $P_1$ $(kPA)$ & $V_2$ $(cm^3)$ & $T_2$ $(K)$ & $P_2$ $(kPA)$ & $n$ & $W(J)$ & $Q(J)$ \\
     \hline
     1 & 198,53 & 300 & 103,258 & 90,336 & 381 & 381,604 & 1,29 & 18,133 & -4,9866 \\
-    2 & 198,692 & 300 & 102,719 & 90,498 & 302 & 228,262 & 1 & &  
+    2 & 198,692 & 300 & 102,719 & 90,498 & 302 & 228,262 & 1 & 16.051 & -16.051
 \end{tabular}
 \end{center}
+
+Com es pot veure a la taula la pressió durant la prova 1 és superior a la pressió durant la prova 2 això és degut perquè a la prova 1 la temperatura també és superior (s'ha realitzat un procès pràcticament adiabàtic). 
+
+Si es comparen les energies es pot observar que el treball ($W$) és superior en el cas adiabàtic tot i que és força semblant al cas isotèrmic. Tot i així, la calor ($Q$) és molt diferent. Això és degut perquè el procés isotèrmic ha anat alliberant en forma de calor tot el treball obtingut (s'ha suposat que $\Delta U \simeq 0$) en canvi el procés adiabàtic ha absorbit el treball aportat i només ha alliberat en forma de calor una petita part del treball aportat. Idealment la calor de la prova 1 però el recipient no és completament adiabàtic.
 
 \textbf{2. Compareu el valor del coeficient politròpic de l’experiència de compressió més ràpida, amb el coeficient isentròpic de l’aire (k=1,4). Discutiu el valor obtingut i les possibles diferències entre els coeficients experimental i teòric.}
 
@@ -50,7 +54,9 @@ El principal factor que pot haver provocat aquest fet és que és impossible fer
 
 \textbf{3. En un diagrama pressió-volum, representeu tots el processos de compressió realitzats. Relacioneu les àrees existents sota les gràfiques amb els valors dels treballs de les diferents experiències.}
 
-En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes en els dos assajos anteriors i també s'hi ha afegit la funció d'interpolació usada.
+En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes en els dos assajos anteriors i també s'hi ha afegit la funció d'interpolació usada. Es pot observar que la corba adiabàtica es troba per sobre de la isotèrmica segons la hipòtesi inicial, ja que els processos isotèrmics tenen $n=1$ i els adiabàtics $n=1.4$. 
+
+Pel que fa a l'àrea sota de les corbes, aquestes són directament el treball realitzat. Es pot observar que l'àrea sota la corba del procès adiabàtic és superior a la del procés isotèrmic, de la mateixa manera que el treball del procés adiabàtic és superior al del isotèrmic.
 
 \begin{center}
 \begin{tikzpicture}[scale=1]
@@ -82,6 +88,8 @@ En el següent gràfic (Pressió - Volum) s'han representat les dades obtingudes
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
+
 
 \subsection*{Cicle d'Otto invers}
 
