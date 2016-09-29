@@ -89,7 +89,24 @@ Pel que fa a l'àrea sota de les corbes, aquestes són directament el treball re
 \end{tikzpicture}
 \end{center}
 
+\textbf{4. A l’experiència isotèrmica, podeu comprovar si el gas es comporta com ideal a l’interval de pressions empíric, determinant el producte PV. Aquest producte ha de ser constant si ho és la temperatura i el nombre de mols contingut al cilindre.}
 
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    title = Histograma de PV,
+    ylabel = Freqüències dels valors,
+    xlabel = PV,
+    ybar,
+    ymin = 0]
+\addplot [
+    hist={bins = 7,
+        data min = 20409.44355,
+        data max = 20907.12019 }] 
+    table [y index = 0]{politropics_isotermic_PV.csv};
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
 \subsection*{Cicle d'Otto invers}
 
