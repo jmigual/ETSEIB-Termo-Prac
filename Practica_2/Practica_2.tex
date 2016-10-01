@@ -118,34 +118,6 @@ Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuï
 
 \subsection*{Cicle d'Otto invers}
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[scale=1]
-\begin{axis}[
-    title = Cicle d'Otto invers,
-    xlabel = Volum ($cm^3$),
-    ylabel = Pressió ($kPa$),
-    ymajorgrids=true]
-\addplot[
-    only marks, 
-    green, 
-    mark=halfcircle*, 
-    mark size = 1pt, 
-    opacity=0.5] 
-    table [y=P, x=V, col sep=semicolon]{otto_invers.csv};
-\addlegendentry{Cicle d'Otto gas real};
-\addplot[
-    only marks, 
-    red, 
-    mark=halfcircle*, 
-    mark size = 1pt, 
-    opacity=0.5] 
-    table [y=P2, x=V, col sep=semicolon]{otto_invers.csv};
-\addlegendentry{Cicle d'Otto gas ideal};
-\end{axis}
-\end{tikzpicture}
-\end{figure}
-
 \textbf{5. Amb les dades experimentals completeu la següent taula:}
 
 \begin{tabular}{c|cccc}
@@ -156,7 +128,7 @@ Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuï
     $T(K)$ & 301,569º & 268,596 & 298,763 & 365,411 \\
 \end{tabular}
 
-\textbf{Determineu els treballs i les calors intercanviats a les quatre etapes del cicle utilitzant les equacions (7), (8), (9) i 10. Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
+\textbf{6. Determineu els treballs i les calors intercanviats a les quatre etapes del cicle utilitzant les equacions (7), (8), (9) i 10. Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
 
 \begin{tabular}{c|cccccc}
     Cicle & $Q_H(J)$ & $Q_L(J)$ & $W_{exp}(J)$ & $W_{comp}(J)$ & $COP_{MF}$ & $COP_{BC}$ \\
@@ -164,6 +136,41 @@ Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuï
     Real & & & & & & \\
     Ideal & & & & & &
 \end{tabular}
+
+\textbf{7. Determineu els coeficients de funcionament del cicle ideal. Com el cicle ideal d’Otto invers té les etapes de compressió i expansió reversibles i adiabàtiques, és tracta de trobar els estats finals d’aquestes etapes (estats 2 i 4), considerant que els estats 1 i 3 del cicle ideal són els mateixos que els del cicle real i que els volums dels estats 2 i 4 són també els mateixos (només canvien les pressions d’aquests dos darrers estats, que s’han de trobar suposant que les etapes de compressió i expansió són reversibles i adiabàtiques). Compareu i discutiu els valors dels COPs dels cicles ideal i real.}
+
+\textbf{8. Representeu en un mateix diagrama pressió-volum, els cicles real i ideal. Compareu-los i discutiu les diferències}
+
+A la \autoref{fig:cicle_otto_invers} es pot observar com hi ha lleugeres diferències entre el cicle d'Otto real i el cicle ideal. Aquestes diferències bàsicament són degudes a que el cilindre utilitzat per realitzar l'experiment no és completament adiabàtic i a l'hora de realitzar la compressió i la expansió hi havia intercanvi de calor a través de les parets del cilindre. Això provoca que en el cas de l'expansió el resultat obtingut sigui una pressió (degut a una major temperatura) lleugerament superior a l'esperada, el mateix passa pel cas de compressió.
+
+\begin{figure}[H]
+    \centering
+    \caption{Cicle d'Otto invers}
+    \label{fig:cicle_otto_invers}
+    \begin{tikzpicture}[scale=1]
+    \begin{axis}[
+    xlabel = Volum ($cm^3$),
+    ylabel = Pressió ($kPa$),
+    ymajorgrids=true]
+    \addplot[
+    only marks, 
+    green, 
+    mark=halfcircle*, 
+    mark size = 1pt, 
+    opacity=0.5] 
+    table [y=P, x=V, col sep=semicolon]{otto_invers.csv};
+    \addlegendentry{Cicle d'Otto real};
+    \addplot[
+    only marks, 
+    red, 
+    mark=halfcircle*, 
+    mark size = 1pt, 
+    opacity=0.5] 
+    table [y=P2, x=V, col sep=semicolon]{otto_invers.csv};
+    \addlegendentry{Cicle d'Otto ideal};
+    \end{axis}
+    \end{tikzpicture}
+\end{figure}
 
 \subsection*{Cicle d'Otto invers modificat}
 
