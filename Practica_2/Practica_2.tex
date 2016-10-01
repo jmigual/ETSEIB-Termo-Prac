@@ -3,15 +3,19 @@
 \usepackage[catalan]{babel} % Language 
 \usepackage{fontspec}
 \usepackage[margin=2cm]{geometry}
+\usepackage{float}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usepackage[hidelinks]{hyperref}
-\usepackage{float}
+\usepackage{amsmath}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 
-\title{\textsc{Laboratori de Termodinàmica} \\ \textsc{Pràctica 2} \\ Compressió de gasos a baixes pressions \\
+\title{
+    \textsc{Laboratori de Termodinàmica} \\
+    \textsc{Pràctica 2} \\
+    Compressió de gasos a baixes pressions \\
     \large
     Professor: Jose Luís \\ Grup: 11 }
 \author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
@@ -97,7 +101,7 @@ Pel que fa a l'àrea sota de les corbes, aquestes són directament el treball re
 
 Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuïdes segons una distribució normal amb uns paràmetres $\mu = 20762,86$ i $\sigma = 65.156$. Donat que la desviació estàndard de la mostra no és molt alta podem considerar que el fet que els valors no siguin tots iguals pot ser degut a l'error causat per l'aparell de mesura o pel fet de no ser un sistema ideal sinó que és un sistema real amb algunes pèrdues.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \caption{Histograma de PV}
 \label{fig:histograma_PV}
@@ -120,6 +124,8 @@ Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuï
 
 \textbf{5. Amb les dades experimentals completeu la següent taula:}
 
+Buscant els punts on el volum és constant es poden trobar els quatre estats, buscant on la pressió és més alta i on és més baixa.
+
 \begin{tabular}{c|cccc}
     & Estat 1 & Estat 2 & Estat 3 & Estat 4 \\
     \hline
@@ -129,6 +135,15 @@ Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuï
 \end{tabular}
 
 \textbf{6. Determineu els treballs i les calors intercanviats a les quatre etapes del cicle utilitzant les equacions (7), (8), (9) i 10. Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
+
+$$ W_{exp} = \frac{P_2 V_2 - P_1 V_1}{k - 1} $$
+$$ W_{comp} = \frac{P_4 V_4 - P_3 V_3}{k - 1} $$
+
+$$ Q_L = \frac{P_3 V_3 - P_2 V_2}{k - 1} $$
+$$ Q_H = \frac{P_1 V_1 - P_4 V_4}{k - 1} $$
+
+$$ COP_{MF} = \frac{|Q_L|}{|Q_H| - |Q_L|} $$
+$$ COP_{BC} = \frac{|Q_H|}{|Q_H| - |Q_L|} $$
 
 \begin{tabular}{c|cccccc}
     Cicle & $Q_H(J)$ & $Q_L(J)$ & $W_{exp}(J)$ & $W_{comp}(J)$ & $COP_{MF}$ & $COP_{BC}$ \\
@@ -184,7 +199,18 @@ A la \autoref{fig:cicle_otto_invers} es pot observar com hi ha lleugeres diferè
     $T(K)$ & 302,973 & 308,234 & 269,298 & 293,852 \\
 \end{tabular}
 
-\textbf{10. Determineu els treballs i les calors intercanviats a les tres etapes del cicle utilitzant les equacions (7), (8), (3) i (4). Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
+\textbf{10. Determineu els treballs i les calors intercanviats a les tres etapes del cicle utilitzant les equacions (7), (9), (3) i (4). Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
+
+$$ W_{exp} = \frac{P_2 V_2 - P_1 V_1}{k - 1} = 
+\frac{90,865·198,527 - 226,645·92,174}{1,29 - 1} = -9833,17 KJ $$
+$$ Q_L = \frac{P_3 V_3 - P_2 V_2}{k - 1} = 
+\frac{102,18·198,527 - 90,865·198,527}{1,29-1} = 7745,98 KJ $$
+
+Suposant que és un gas ideal i tenint en compte que és un procés isotèrmic llavors es pot utilitzar $ PV = nRT$.
+
+$$ P_1 V_1 = 21288,13834 \hspace{2cm} P_3 V_3 = 20285,48886 $$
+
+$$ \text{Fent la mitja: } nRT = 20786,8136 \implies W_{comp} = -nRT·ln\left(\frac{V1}{V3}\right) = 15948,62 KJ $$
 
 \textbf{11. Determineu els coeficients de funcionament del cicle modificat ideal. Per fer-ho cal que tracteu, com en el cicle d'Otto ideal, l'etapa d'expansió com si fos adiabàtica reversible. Compareu i discutiu els valors dels COPs dels cicles ideal i real.}
 
