@@ -136,8 +136,12 @@ Buscant els punts on el volum és constant es poden trobar els quatre estats, bu
 
 \textbf{6. Determineu els treballs i les calors intercanviats a les quatre etapes del cicle utilitzant les equacions (7), (8), (9) i 10. Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
 
-$$ W_{exp} = \frac{P_2 V_2 - P_1 V_1}{k - 1} $$
-$$ W_{comp} = \frac{P_4 V_4 - P_3 V_3}{k - 1} $$
+$$ W_{exp} = \frac{P_2 V_2 - P_1 V_1}{k - 1} = 
+\frac{60,692·10^3 · 198,527·10^{-6} - 154.983·10^3 · 91,853·10^{-6}}{1,29 - 1} = \boxed{-7,54J} 
+$$
+$$ W_{comp} = \frac{P_4 V_4 - P_3 V_3}{k - 1} = 
+\frac{184,618·10^3 · 91,371·10^{-6} - 68,774·10^3 · 198,527·10^{-6}}{1.29 - 1} = \boxed{13,825J}
+$$
 
 $$ Q_L = \frac{P_3 V_3 - P_2 V_2}{k - 1} $$
 $$ Q_H = \frac{P_1 V_1 - P_4 V_4}{k - 1} $$
@@ -212,18 +216,15 @@ $$ P_1 V_1 = 21288,13834 \hspace{2cm} P_3 V_3 = 20285,48886 $$
 
 $$ \text{Fent la mitja: } nRT = 20786,8136 \implies W_{comp} = -nRT·ln\left(\frac{V1}{V3}\right) = 15948,62 KJ $$
 
-\textbf{11. Determineu els coeficients de funcionament del cicle modificat ideal. Per fer-ho cal que tracteu, com en el cicle d'Otto ideal, l'etapa d'expansió com si fos adiabàtica reversible. Compareu i discutiu els valors dels COPs dels cicles ideal i real.}
+$$ COP_{MF} = \frac{|Q_L|}{|W|} = 1,26662 $$
 
-\begin{tabular}{c|cccccc}
-    Cicle & $Q_H(J)$ & $Q_L(J)$ & $W_{exp}(J)$ & $W_{comp}(J)$ & $COP_{MF}$ & $COP_{BC}$ \\
-    \hline
-    Real & & & & & & \\
-    Ideal & & & & & &
-\end{tabular}
+$$ COP_{BC} = \frac{|Q_H|}{|W|} = 2,60792 $$
+
+\textbf{11. Determineu els coeficients de funcionament del cicle modificat ideal. Per fer-ho cal que tracteu, com en el cicle d'Otto ideal, l'etapa d'expansió com si fos adiabàtica reversible. Compareu i discutiu els valors dels COPs dels cicles ideal i real.}
 
 \textbf{12. Representeu en un mateix diagrama pressió-volum, els cicles real i ideal. Compareu-los i discutiu les diferències.}
 
-\subsection*{Comparació de cicles}
+\subsection*{Comparació de cicles}	
 
 \textbf{13. Compareu de forma gràfica o analítica els dos cicles estudiats (Otto i Otto modificat) i discutiu les diferències obtingudes en els valors dels treballs, calors i COPs}
 
