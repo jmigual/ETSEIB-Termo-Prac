@@ -9,6 +9,9 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
 
+\usepgfplotslibrary{external} 
+\tikzexternalize
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 
@@ -102,22 +105,26 @@ Pel que fa a l'àrea sota de les corbes, aquestes són directament el treball re
 Com es pot veure a la \autoref{fig:histograma_PV} les dades es troben distribuïdes segons una distribució normal amb uns paràmetres $\mu = 20762,86$ i $\sigma = 65.156$. Donat que la desviació estàndard de la mostra no és molt alta podem considerar que el fet que els valors no siguin tots iguals pot ser degut a l'error causat per l'aparell de mesura o pel fet de no ser un sistema ideal sinó que és un sistema real amb algunes pèrdues.
 
 \begin{figure}[H]
-\centering
-\caption{Histograma de PV}
-\label{fig:histograma_PV}
-\begin{tikzpicture}
-\begin{axis}[
-    ylabel = Freqüències dels valors,
-    xlabel = PV,
-    ybar,
-    ymin = 0]
-\addplot [
-    hist={bins = 7,
-        data min = 20409.44355,
-        data max = 20907.12019 }] 
-    table [y index = 0]{politropics_isotermic_PV.csv};
-\end{axis}
-\end{tikzpicture}
+	\centering
+	\caption{Histograma de PV}
+	\label{fig:histograma_PV}
+	\begin{tikzpicture}
+		\begin{axis}[
+		    ylabel = Freqüències dels valors,
+		    xlabel = PV,
+		    ybar,
+		    ymin = 0
+		]
+		\addplot [
+		    hist= { 
+		    	bins = 7,
+		        data min = 20409.44355,
+		        data max = 20907.12019 
+		        }
+		    ] 
+		    table [y index = 0]{politropics_isotermic_PV.csv};
+		\end{axis}
+	\end{tikzpicture}
 \end{figure}
 
 \subsection*{Cicle d'Otto invers}
@@ -179,27 +186,28 @@ A la \autoref{fig:cicle_otto_invers} es pot observar com hi ha lleugeres diferè
     \caption{Cicle d'Otto invers}
     \label{fig:cicle_otto_invers}
     \begin{tikzpicture}[scale=1]
-    \begin{axis}[
-    xlabel = Volum ($cm^3$),
-    ylabel = Pressió ($kPa$),
-    ymajorgrids=true]
-    \addplot[
-    only marks, 
-    green, 
-    mark=halfcircle*, 
-    mark size = 1pt, 
-    opacity=0.5] 
-    table [y=P, x=V, col sep=semicolon]{otto_invers.csv};
-    \addlegendentry{Cicle d'Otto real};
-    \addplot[
-    only marks, 
-    red, 
-    mark=halfcircle*, 
-    mark size = 1pt, 
-    opacity=0.5] 
-    table [y=P2, x=V, col sep=semicolon]{otto_invers.csv};
-    \addlegendentry{Cicle d'Otto ideal};
-    \end{axis}
+		\begin{axis}[
+			xlabel = Volum ($cm^3$),
+			ylabel = Pressió ($kPa$),
+			ymajorgrids=true
+		]
+			\addplot[
+				only marks, 
+				green, 
+				mark=halfcircle*, 
+				mark size = 1pt, 
+				opacity=0.5
+			] table [y=P, x=V, col sep=semicolon]{otto_invers.csv};
+			\addlegendentry{Cicle d'Otto real};
+			\addplot[
+				only marks, 
+				red, 
+				mark=halfcircle*, 
+				mark size = 1pt, 
+				opacity=0.5
+			] table [y=P2, x=V, col sep=semicolon]{otto_invers.csv};
+			\addlegendentry{Cicle d'Otto ideal};
+		\end{axis}
     \end{tikzpicture}
 \end{figure}
 
@@ -239,12 +247,58 @@ $$ COP_{BC} = \frac{|Q_H|}{|W|} = \boxed{2,60792} $$
 Si són ideals, agafem l'estat 1 com a referència:
 
 \begin{center}
-	\begin{tabular}{cl}
-		& 
+	\begin{tabular}{l|rrr}
+		& Estat 1 & Estat 2 & Estat 3 \\
+		\hline
+		$P(kPa)$ & 226,645 & 77,42 & 105,23 \\
+		$V(cm^3)$ & 92,174 & 198,527 & 198,527 \\
+		$T(K)$ & 302,973 & 269,298 & 293,852
 	\end{tabular}
 \end{center}
 
+\begin{align*}
+	W_{exp} &= -13,802 J &  Q_L &= 13,802 J \\
+	W_{comp} &= 16,028 J &  Q_H &= 16,028 J
+\end{align*}
+
+$$ COP_{MF} = \frac{|Q_L|}{|W|} = 6,2 $$
+$$ COP_{BC} = \frac{|Q_H|}{|W|} = 7,2 $$
+
 \textbf{12. Representeu en un mateix diagrama pressió-volum, els cicles real i ideal. Compareu-los i discutiu les diferències.}
+
+El gràfic s’ha construït suposant una corba isotèrmica i una adiabàtica que passen per l’estat 1.
+
+\begin{figure}[H]
+	\centering
+	\caption{Cicle d'Otto modificat, real i ideal}
+	\label{fig:otto_modificat}
+	\begin{tikzpicture}
+		\begin{axis}[
+			xlabel = Volum ($cm^3$),
+			ylabel = Pressió ($kPa$),
+			ymajorgrids=true
+		]
+			\addplot[
+				only marks, 
+				green, 
+				mark=halfcircle*, 
+				mark size = 1pt, 
+				opacity=0.5
+			] table [y=P, x=V, col sep=semicolon]{otto_modificat.csv};
+			\addlegendentry{Cicle d'Otto real};
+			\addplot[
+				only marks, 
+				red, 
+				mark=halfcircle*, 
+				mark size = 1pt, 
+				opacity=0.5
+			] table [y=PI, x=V, col sep=semicolon]{otto_modificat.csv};
+			\addlegendentry{Cicle d'Otto ideal};
+		\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+S’observen diferències significatives a la corba adiabàtica ($1 \rightarrow 2$) on el gas allibera calor que idealment hauria de ser nul·la. També en el procés isocòric ($2\rightarrow3$) la temperatura a la qual finalitza és inferior a la del ambient, fet que comporta que el gas s’escalfi i no acabi de seguir una corba isotèrmica amb exactitud durant el procés ($3\rightarrow1$).
 
 \subsection*{Comparació de cicles}	
 
