@@ -339,6 +339,25 @@ S’observen diferències significatives a la corba adiabàtica ($1 \rightarrow 
 
 \textbf{13. Compareu de forma gràfica o analítica els dos cicles estudiats (Otto i Otto modificat) i discutiu les diferències obtingudes en els valors dels treballs, calors i COPs}
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                ybar,
+                xtick = data,
+                xticklabels = {
+                    $Q_H$,$Q_L$,$W_{exp}$,$W_{comp}$,$COP_{MF}$,$COP_{BC}$
+                    },
+                nodes near coords, 
+                nodes near coords align={vertical},
+                x tick label style={rotate=45,anchor=east}
+            ]
+            \addplot table[x expr = \coordindex, y=I, col sep=semicolon]{pregunta_13.csv};
+            \addplot table[x expr = \coordindex, y=M, col sep=semicolon]{pregunta_13.csv};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
 \subsection*{Processos politròpics amb gasos reals}
 
 \textbf{14. Fent servir de model l’exemple numèric resolt a l’annex, trobeu la potència que cal subministrar a un compressor que comprimeix $0,5 mol/s$ d’isobutà des de $0,73 MPa$ i $387,8 K$ fins a $2,19 MPa$ i $449,0 K$.}
