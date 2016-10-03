@@ -24,7 +24,7 @@
     \large
     Professor: Jose Luís \\ Grup: 11 }
 \author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
-\date{26-9-2016}
+\date{26 de setembre de 2016}
 
 \begin{document}
 \maketitle
@@ -207,11 +207,11 @@ $$
 
 $$ 
 COP_{MF} = \frac{|Q_L|}{|Q_H| - |Q_L|} =
-\frac{1,455J3}{1,455J - 1,455J} = \boxed{2,769} 
+\frac{3,195}{4,348 - 3,195} = \boxed{2,769} 
 $$
 $$ 
 COP_{BC} = \frac{|Q_H|}{|Q_H| - |Q_L|} =
-\frac{1,455J}{1,455J - 1,455J} = \boxed{3,769} 
+\frac{4,348}{4,348 - 3,195} = \boxed{3,769} 
 $$
 
 Com es pot veure el COP del cicle ideal és superior al del cicle real. Això és degut a que el cicle ideal és molt més eficient, ja que es considera que les parets del cilindre són totalment adiabàtiques. D'aquesta manera no hi ha pèrdua de calor entre els estats 1 i 2 i els estats 3 i 4 fent que la calor absorbida i alliberada durant les etapes isocòriques sigui superior.
@@ -256,7 +256,7 @@ A la \autoref{fig:cicle_otto_invers} es pot observar com hi ha lleugeres diferè
 
 \begin{center}
 	\begin{tabular}{l|rrrr}
-		& Estat 1 Inicial & Estat 1 Final & Estat 3 & Estat 4 \\
+		& Estat 1 Inicial & Estat 1 Final & Estat 2 & Estat 3 \\
 		\hline
 		$P(kPa)$ & 226,645 & 230,956 & 90,865 & 102,18 \\
 		$V(cm^3)$ & 92,174 & 92,174 & 198,527 & 198,527 \\
@@ -266,16 +266,23 @@ A la \autoref{fig:cicle_otto_invers} es pot observar com hi ha lleugeres diferè
 
 \textbf{10. Determineu els treballs i les calors intercanviats a les tres etapes del cicle utilitzant les equacions (7), (9), (3) i (4). Determineu els coeficients de funcionament del cicle com a màquina frigorífica i com a bomba de calor utilitzant les calors i les equacions (6). Discutiu els resultats obtinguts.}
 
+La nostra $k_{exp} = 1,29$.
+
 $$ W_{exp} = \frac{P_2 V_2 - P_1 V_1}{k - 1} = 
-\frac{90,865·198,527 - 226,645·92,174}{1,29 - 1} = \boxed{-9833,17 KJ} $$
+\frac{90,865·10^3 · 198,527·10^{-6} - 226,645·10^3 · 92,174·10^{-6}}{1,29 - 1} = \boxed{-9,833 J} $$
 $$ Q_L = \frac{P_3 V_3 - P_2 V_2}{k - 1} = 
-\frac{102,18·198,527 - 90,865·198,527}{1,29-1} = \boxed{7745,98 KJ} $$
+\frac{102,18·10^3 · 198,527·10^{-6} - 90,865·10^3 · 198,527·10^{-6}}{1,29-1} = \boxed{7,746 J} $$
 
 Suposant que és un gas ideal i tenint en compte que és un procés isotèrmic llavors es pot utilitzar $ PV = nRT$.
 
-$$ P_1 V_1 = 21288,13834 \hspace{2cm} P_3 V_3 = 20285,48886 $$
+$$ P_1 V_1 = 21,288 \quad P_3 V_3 = 20,285 $$
 
-$$ \text{Fent la mitja: } nRT = 20786,8136 \implies W_{comp} = -nRT·ln\left(\frac{V1}{V3}\right) = \boxed{15948,62 KJ} $$
+$$ \text{Fent la mitja: } nRT = 20,787 \implies W_{comp} = 
+-nRT·ln\left(\frac{V1}{V3}\right) = \boxed{15,949 J} $$
+
+Com que $\Delta U = 0$ ja que la temperatura no varia obtenim que $Q_H = -W_{comp}$
+
+$$ Q_H = \boxed{-15,949 J} $$
 
 $$ COP_{MF} = \frac{|Q_L|}{|W|} = \boxed{1,26662} $$
 
@@ -358,9 +365,18 @@ S’observen diferències significatives a la corba adiabàtica ($1 \rightarrow 
             ]
             \addplot table[x expr = \coordindex, y=I, col sep=semicolon]{pregunta_13.csv};
             \addplot table[x expr = \coordindex, y=M, col sep=semicolon]{pregunta_13.csv};
+            \legend{Invers, Modificat}
         \end{axis}
     \end{tikzpicture}
 \end{figure}
+
+Els treballs $W_{comp}$ del dos processos idealment haurien de ser iguals ja que els dos són el mateix procés però, a causa de la temperatura ambient, la temperatura inicial del cicle d’Otto invers modificat (COIM) és superior a la del cicle d’Otto invers (COI).
+
+Això resta sentit a les comparacions absolutes que es poden fer del treball i la calor.
+
+Pel que fa als COP’s, el COP de màquina frigorífica de COI ha estat un $23,8\%$ superior al del COIM. Aquest fet s’explica per la disminució del treball realitzat en el cicle ja que el procés on  el gas absorbeix calor és el mateix per ambos processos.
+
+El COP de bomba de calor del COIM ha estat $1,6\%$ superior al del COI. Una variació molt menor respecte a la de màquina frigorífica.
 
 \subsection*{Processos politròpics amb gasos reals}
 
@@ -368,17 +384,19 @@ S’observen diferències significatives a la corba adiabàtica ($1 \rightarrow 
 
 \begin{center}
 	\begin{tabular}{l|rr}
-		& Inicial & Final \\
+		& Entrada & Sortida \\
 		\hline
 		$P_R$ & 0,2 & 0,6 \\
 		$T_R$ & 0,95 & 1,1 \\
 		$Z_1$ & 0,9174 & 0,8323 \\
 		$Z_2$ & -0,0262 & 0,0236 \\
 		$Z$ & 0,9126 & 0,8366 \\
-		$V$ & 0,007141 & 0,016963 \\
+		$\dot{V}$ & 0,007141 & 0,016963 \\
 	\end{tabular}
 \end{center}
 
-$$ w = 0,183 \hspace{1cm} Z_{mig} = 0,8746 \hspace{1cm} W = 1,75KW $$
+$$ w = 0,183 \quad Z_{mig} = 0,8746 \quad n = 1,27 $$
+
+$$ \boxed{W = 1,75KW} $$
 
 \end{document}
