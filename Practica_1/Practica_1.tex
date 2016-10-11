@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+
+\usepackage[catalan]{babel} % Language 
+\usepackage{fontspec}
+\usepackage[margin=2cm]{geometry}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{csvsimple}
+
+\pgfplotsset{compat=1.14}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\title{
+	\textsc{Laboratori de Termodinàmica} \\
+	\textsc{Pràctica 1} \\
+	Propietats PVT d'una substància pura \\
+	\large
+	Professor: Jose Luís \\ Grup: 11 }
+\author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
+\date{11 d'octubre de 2016}
+
+\begin{document}
+\maketitle
+
+\section*{Objectius}
+La pràctica té per objecte principal determinar experimentalment les relacions pressió, volum i temperatura ($PvT$) d'una substància pura i observar-ne el comportament en diferents situacions (líquid, vapor, equilibri líquid-vapor, punt crític i gas). Per fer això es determinaran diferents isotermes, la corba de saturació i les coordenades del punt crític del gas. Els resultats es presentaran en forma de diagrames $P-T$ i $P-v$.
+
+Un segon objecte de la pràctica és comprendre el concepte d’equació d’estat i mostrar-ne la seva importància dins del càlcul de propietats termodinàmiques. Per fer això es buscarà quina equació d’estat es més adequada per descriure el comportament d’una substància en funció de la precisió i complexitat del càlcul.
+
+
+\section*{Obtenció i presentació de resultats}
+
+\begin{enumerate}
+	\item Anoteu els valors obtinguts en taules com aquestes o en d’altres de semblants (podeu fer servir el full de càlcul anomenat \textbf{Propietats $\boldmath SF_6$ (full Experimental)} que utilitzareu en els propers apartats). Comenteu els fenòmens observats durant les experiències.
+\end{enumerate}
+
+\begin{table}[H]
+	\begin{minipage}{0.49\linewidth}
+		\begin{tabular}{rrr}
+			\multicolumn{3}{c}{\bf Temperatura (K), T = } \\
+			\hline
+			Pressió [MPa] & Volum [$cm^3$] & v [$cm^3 · g^{-1}$]
+		\end{tabular}
+		\caption{Taula Isoterma subcrítica}
+	\end{minipage}
+	\begin{minipage}{0.49\linewidth}
+		\begin{tabular}{rrr}
+			\multicolumn{3}{c}{\bf Temperatura (K), T = } \\
+			\hline
+			Pressió [MPa] & Volum [$cm^3$] & v [$cm^3 · g^{-1}$]
+			
+		\end{tabular}
+		\caption{Taula Isoterma supercrítica}
+	\end{minipage}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{rr}
+		\textbf{Volum [$cm^3$], V = } & \textbf{Volum [$cm^3 · g^{-1}$], v = } \\
+		\hline
+		Pressió [MPa] & Temperatura [K] \\
+	\end{tabular}
+	\caption{Taula Isocora}
+\end{table}
+
+\begin{enumerate}[resume]
+	\item Els resultats de les experiències isotèrmiques es representen en un diagrama P-v, i es comparen amb les dades tabulades que trobareu a les taules dels annexes o en el full de càlcul anomenat \textbf{Propietats $\boldmath SF_6$ (DiagramaPv)}. Discutiu les diferencies observades entre les dades tabulades i les experimentals.
+\end{enumerate}
+
+\begin{figure}[H]
+	\begin{tikzpicture}
+		
+	\end{tikzpicture}
+\end{figure}
+
+\end{document}
