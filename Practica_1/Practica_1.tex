@@ -79,34 +79,72 @@ Un segon objecte de la pràctica és comprendre el concepte d’equació d’est
 
 \begin{figure}[H]
     \centering
-	\begin{tikzpicture}[scale=1]
+	\begin{tikzpicture}
 		\begin{semilogxaxis}[
                 xlabel = v ($m^3 · kg^{-1}$),
                 ylabel = P (MPa),
-                ymajorgrids = true,
-                xmajorgrids = true,
                 xmin = 0.0001, xmax = 0.1,
                 ymin = 0, ymax = 6,
                 xtick = {0.0001, 0.001, 0.01, 0.1},
                 log ticks with fixed point,
                 width=\textwidth, height=0.8\textwidth,
                 legend style={draw=none},
+                cycle list name = color list,
             ]
             \addplot[black] table[mark=none, x=vl, y=P, col sep = semicolon, forget plot]{saturacio.csv};
             \addplot[black] table[mark=none, x=vv, y=P, col sep = semicolon, forget plot]{saturacio.csv};
-            \addplot table[mark=none, x=v-67, y=P-67, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-60, y=P-60, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-55, y=P-55, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-51, y=P-51, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-45.58, y=P-45.58, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-40, y=P-40, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-35, y=P-35, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-27, y=P-27, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-17, y=P-17, col sep = semicolon]{isotermes.csv};
-            \addplot table[mark=none, x=v-7, y=P-7, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-67, y=P-67, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-60, y=P-60, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-55, y=P-55, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-51, y=P-51, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-45.58, y=P-45.58, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-40, y=P-40, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-35, y=P-35, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-27, y=P-27, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-17, y=P-17, col sep = semicolon]{isotermes.csv};
+            \addplot+[mark=none] table[x=v-7, y=P-7, col sep = semicolon]{isotermes.csv};
             \legend{T=67ºC, T=60ºC, T=55ºC, T=51ºC, T=45.48ºC, T=40ºC, T=35ºC, T=27ºC, T=17ºC,T=7ºC}
         \end{semilogxaxis}
 	\end{tikzpicture}
+\end{figure}
+
+\begin{enumerate}[resume]
+    \item Els resultats de l’experiència isocòrica es representen en un diagrama $P-T$ i es comparen amb les dades tabulades que trobareu a les taules dels annexes o en el full de càlcul anomenat \textbf{Propietats $SF_6$ (DiagramaPT)}. El procés isocòric si es vol es pot representar també en el diagrama $P-v$. Compareu també el punt crític experimental amb el teòric.
+\end{enumerate}
+
+\begin{enumerate}[resume]
+    \item També es pot treballar el concepte de \emph{títol} i comprovar que el volum d’estats bifàsics es pot descriure a través del títol i dels volums de vapor i líquid saturat. Es calcularà el títol inicial del procés isocòric utilitzant el volum experimental i les dades tabulades dels volums de vapor i líquid saturat.
+\end{enumerate}
+
+\begin{enumerate}[resume]
+    \item Per determinar quina equació d’estat reprodueix millor les propietats del $SF_6$ es calcularà l’error que tindria lloc si el gas seguís diferents equacions d’estat. Per fer aquest càlculs cal utilitzar el full de càlcul anomenat \textbf{ErrorsEquacions}. En aquest full, per unes quantes dades (2 o 3) de les dues isotermes experimentals (una subcrítica i una supercrítica), es calcularà l’error comparant les pressions experimentals amb les determinades amb les diferents equacions d’estat. Seleccioneu l’equació que doni menys error per resoldre el següent apartat.
+\end{enumerate}
+
+\begin{enumerate}[resume]
+    \item Les dues isotermes experimentals es compararan amb les obtingudes utilitzant l’equació de gas ideal i l’equació que hagi donat un error més petit a l’apartat anterior. Aquesta comparació la podeu fer en un diagrama $Pv$ utilitzant el full de càlcul anomenat \textbf{Equacions}. Primer cal introduir les dades experimentals en \textbf{DadesGas} i el full de càlcul calcularà la isoterma utilitzant diferents equacions d’estat inclosa la de gas ideal. Finalment es pot graficar en \textbf{GraficEquació} les dades experimentals i les obtingudes mitjançant l’equació d’estat escollida i la de gas ideal. Discutiu el resultat obtingut, especialment en quan a la bondat dels diferents mètode d’estimació de propietats i a les formes que presenten les isotermes.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                xlabel = v($cm^3·g^{-1}$),
+                ylabel = P (MPa),
+                xmin = 0, xmax = 9,
+                ymin = 1.5, ymax = 5.5,
+                width=\textwidth, height=0.8\textwidth,
+                legend style={draw=none},
+                cycle list name = exotic,
+            ]
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{gas_ideal.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{bwr.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{peng_robinson.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{redlich_kwong.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{soave.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{van_der_waals.csv};
+            \legend{Gas Ideal, Benedict Webb Rubin, Peng i Robinson, Redlich Kwong, Soave, Van der Waals};
+        \end{axis}
+    \end{tikzpicture}
 \end{figure}
 
 \end{document}
