@@ -11,6 +11,9 @@
 \usepackage{enumitem}
 \usepackage{csvsimple}
 
+\usepgfplotslibrary{external} 
+\tikzexternalize
+
 \pgfplotsset{compat=1.14}
 
 \setlength{\parindent}{0pt}
@@ -75,8 +78,34 @@ Un segon objecte de la pràctica és comprendre el concepte d’equació d’est
 \end{enumerate}
 
 \begin{figure}[H]
-	\begin{tikzpicture}
-		
+    \centering
+	\begin{tikzpicture}[scale=1]
+		\begin{semilogxaxis}[
+                xlabel = v ($m^3 · kg^{-1}$),
+                ylabel = P (MPa),
+                ymajorgrids = true,
+                xmajorgrids = true,
+                xmin = 0.0001, xmax = 0.1,
+                ymin = 0, ymax = 6,
+                xtick = {0.0001, 0.001, 0.01, 0.1},
+                log ticks with fixed point,
+                width=\textwidth, height=0.8\textwidth,
+                legend style={draw=none},
+            ]
+            \addplot[black] table[mark=none, x=vl, y=P, col sep = semicolon, forget plot]{saturacio.csv};
+            \addplot[black] table[mark=none, x=vv, y=P, col sep = semicolon, forget plot]{saturacio.csv};
+            \addplot table[mark=none, x=v-67, y=P-67, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-60, y=P-60, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-55, y=P-55, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-51, y=P-51, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-45.58, y=P-45.58, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-40, y=P-40, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-35, y=P-35, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-27, y=P-27, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-17, y=P-17, col sep = semicolon]{isotermes.csv};
+            \addplot table[mark=none, x=v-7, y=P-7, col sep = semicolon]{isotermes.csv};
+            \legend{T=67ºC, T=60ºC, T=55ºC, T=51ºC, T=45.48ºC, T=40ºC, T=35ºC, T=27ºC, T=17ºC,T=7ºC}
+        \end{semilogxaxis}
 	\end{tikzpicture}
 \end{figure}
 
