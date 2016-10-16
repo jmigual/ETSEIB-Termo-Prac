@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{csvsimple}
+\usepackage{gensymb}
 
 \usepgfplotslibrary{external} 
 \tikzexternalize
@@ -79,7 +80,7 @@ Un segon objecte de la pràctica és comprendre el concepte d’equació d’est
 \begin{table}[H]
 	\centering
 	\begin{tabular}{rr}
-		\multicolumn{2}{l}{\textbf{Volum [$cm^3$], $\boldsymbol{V} = $ }} \\ 
+		\multicolumn{2}{l}{\textbf{Volum [$cm^3$], $\boldsymbol{V} = 0,578\ cm^3$ }} \\ 
 		\multicolumn{2}{l}{\textbf{Volum [$cm^3 · g^{-1}$], $\boldsymbol{v} = 1,351\ cm^3·g^{-1}$ }}  \\
 		Pressió [MPa] & Temperatura [K] \\
 		\hline
@@ -95,6 +96,8 @@ Un segon objecte de la pràctica és comprendre el concepte d’equació d’est
 
 A la \autoref{tab:subcritica} (subcrítica) es pot observar que a partir d'un volum de $0,9\ cm^3$ la pressió es manté constant a $2,55\ MPa$ i que torna a augmentar a partir de $1,7\ cm^3$. Així doncs en aquest interval de volum el $SF_6$ està passant de fase gasosa a líquida. En canvi, aquest fenomen no es pot veure a la \autoref{tab:supercritica} (supercrítica) ja que el $SF_6$ es troba per sobre de la seva temperatura crítica i no arriba a passar mai a fase líquida.
 
+Pel que fa a la \autoref{tab:isocora} (isocora) durant l'experiència es va poder observar que al voltant de la $T_c\ (46 \degree C)$ desapareixia la línia que separa la fase líquida de la de vapor.
+
 \begin{enumerate}[resume]
 	\item Els resultats de les experiències isotèrmiques es representen en un diagrama P-v, i es comparen amb les dades tabulades que trobareu a les taules dels annexes o en el full de càlcul anomenat \textbf{Propietats $\boldmath SF_6$ (DiagramaPv)}. Discutiu les diferencies observades entre les dades tabulades i les experimentals.
 \end{enumerate}
@@ -105,7 +108,7 @@ A la \autoref{tab:subcritica} (subcrítica) es pot observar que a partir d'un vo
 		\begin{semilogxaxis}[
                 xlabel = v ($m^3 · kg^{-1}$),
                 ylabel = P (MPa),
-                xmin = 0.0001, xmax = 0.1,
+                xmin = 0.0004, xmax = 0.1,
                 ymin = 0, ymax = 6,
                 xtick = {0.0001, 0.001, 0.01, 0.1},
                 log ticks with fixed point,
@@ -116,17 +119,19 @@ A la \autoref{tab:subcritica} (subcrítica) es pot observar que a partir d'un vo
             ]
             \addplot[black, style = {line width=1.6pt}] table[mark=none, x=vl, y=P, col sep = semicolon, forget plot]{saturacio.csv};
             \addplot[black, style = {line width=1.6pt}] table[mark=none, x=vv, y=P, col sep = semicolon, forget plot]{saturacio.csv};
+            \addplot+[mark=*, only marks] table[x=v2, y=P2, col sep = semicolon]{experimental_supercritica.csv};
+            \addplot+[mark=*, only marks] table[x=v2, y=P2, col sep = semicolon]{experimental_subcritica.csv};
             \addplot+[mark=none] table[x=v-67, y=P-67, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-60, y=P-60, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-55, y=P-55, col sep = semicolon]{isotermes.csv};
-            \addplot+[mark=none] table[x=v-51, y=P-51, col sep = semicolon]{isotermes.csv};
+            \addplot+[purple, mark=none] table[x=v-51, y=P-51, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-45.58, y=P-45.58, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-40, y=P-40, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-35, y=P-35, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-27, y=P-27, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-17, y=P-17, col sep = semicolon]{isotermes.csv};
             \addplot+[mark=none] table[x=v-7, y=P-7, col sep = semicolon]{isotermes.csv};
-            \legend{T=67ºC, T=60ºC, T=55ºC, T=51ºC, T=45.48ºC, T=40ºC, T=35ºC, T=27ºC, T=17ºC,T=7ºC}
+            \legend{Supercrítica, Subcrítica, T=67ºC, T=60ºC, T=55ºC, T=51ºC, T=45.48ºC, T=40ºC, T=35ºC, T=27ºC, T=17ºC,T=7ºC}
         \end{semilogxaxis}
 	\end{tikzpicture}
 \end{figure}
