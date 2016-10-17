@@ -12,6 +12,11 @@
 \usepackage{scrextend}
 \usepackage{csvsimple}
 \usepackage{gensymb}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \usepgfplotslibrary{external} 
 \tikzexternalize
@@ -42,7 +47,7 @@ Un segon objecte de la pràctica és comprendre el concepte d’equació d’est
 \section*{Obtenció i presentació de resultats}
 
 \begin{enumerate}
-	\item \textbf{Anoteu els valors obtinguts en taules com aquestes o en d’altres de semblants (podeu fer servir el full de càlcul anomenat \textbf{Propietats $\boldmath SF_6$ (full Experimental)} que utilitzareu en els propers apartats). Comenteu els fenòmens observats durant les experiències.}
+	\item \textbf{Anoteu els valors obtinguts en taules com aquestes o en d’altres de semblants (podeu fer servir el full de càlcul anomenat \textbf{Propietats $SF_6$ (full Experimental)} que utilitzareu en els propers apartats). Comenteu els fenòmens observats durant les experiències.}
 \end{enumerate}
 
 \begin{table}[H]
@@ -225,15 +230,16 @@ Les condicions inicials del proces isocoric són:
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{rr}
-		\multicolumn{11}{1}{\textbf{Titol o algo aixi?}}  \\
-		Resultats & Pressió [MPa] & Volum[$cm^3$] & volum específic [$cm^3 · g^{-1}$] & Temperatura [K] & Gas Ideal & VanderWaals & Redlich Kwong & Soave & Peng Robinson & BWR HanStarling \\
+	\begin{tabular}{@{}R{1.5cm}R{2cm}R{2cm}R{1cm}R{1.3cm}R{1.3cm}R{1cm}R{1.5cm}R{1.3cm}@{} }
+		Pressió [MPa] & volum específic [$cm^3 · g^{-1}$] & Temperatura [K] & Gas Ideal & Van der Waals & Redlich Kwong & Soave & Peng Robinson & BWR Han Starling \\
 		\hline
 		\csvreader[
-		late after line=\\, 
-		head to column names, separator=semicolon
-		]
-		{problema5.csv}{}{\Resultats & \P & \V & \v & \T & \GasIdeal & \VanderWaals & \RedlichKwong & \Soave & \PengRobinson & \BWRHanStarling }
+        		late after line=\\, 
+        		head to column names, separator=semicolon
+    		]
+    		{problema5.csv}{}{\P & \v & \T & \GasIdeal & \VanderWaals & \RedlichKwong & \Soave & \PengRobinson & \BWRHanStarling }
+        \hline
+        \multicolumn{3}{c}{Mitjana error absolut} & 107,88 & 178,40 & 17,98 & 13,20 & 11,82 & 15,90
 	\end{tabular}
 	\caption{Taula d'errors d'equacions}
 	\label{tab:errors}
@@ -256,13 +262,15 @@ Les condicions inicials del proces isocoric són:
                 legend cell align = left,
                 cycle list name = exotic,
             ]
+            \addplot+[mark=*, only marks] table[x=v3, y=P2, col sep = semicolon]{experimental_supercritica.csv};
+            \addplot+[mark=*, only marks] table[x=v3, y=P2, col sep = semicolon]{experimental_subcritica.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{gas_ideal.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{bwr.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{peng_robinson.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{redlich_kwong.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{soave.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{van_der_waals.csv};
-            \legend{Gas Ideal, Benedict Webb Rubin, Peng i Robinson, Redlich Kwong, Soave, Van der Waals};
+            \legend{Experimental supercrítica, Experimental subcrítica, Gas Ideal, Benedict Webb Rubin, Peng i Robinson, Redlich Kwong, Soave, Van der Waals};
         \end{axis}
     \end{tikzpicture}
 \end{figure}
