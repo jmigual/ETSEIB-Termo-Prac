@@ -167,6 +167,23 @@ Les condicions inicials del proces isocoric són:
     \item Per determinar quina equació d’estat reprodueix millor les propietats del $SF_6$ es calcularà l’error que tindria lloc si el gas seguís diferents equacions d’estat. Per fer aquest càlculs cal utilitzar el full de càlcul anomenat \textbf{ErrorsEquacions}. En aquest full, per unes quantes dades (2 o 3) de les dues isotermes experimentals (una subcrítica i una supercrítica), es calcularà l’error comparant les pressions experimentals amb les determinades amb les diferents equacions d’estat. Seleccioneu l’equació que doni menys error per resoldre el següent apartat.
 \end{enumerate}
 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{rr}
+		\multicolumn{11}{l}{\textbf{Titol o algo aixi?}}  \\
+		Resultats & Pressió [MPa] & Volum[$cm^3$] & volum específic [$cm^3 · g^{-1}$] & Temperatura [K] & Gas Ideal & VanderWaals & Redlich Kwong & Soave & Peng Robinson & BWR HanStarling \\
+		\hline
+		\csvreader[
+		late after line=\\, 
+		head to column names, separator=semicolon
+		]
+		{problema5.csv}{}{\Resultats & \P & \V & \v & \T & \GasIdeal & \VanderWaals & \RedlichKwong & \Soave & \PengRobinson & \BWRHanStarling }
+	\end{tabular}
+	\caption{Taula d'errors d'equacions}
+	\label{tab:errors}
+\end{table}
+
 \begin{enumerate}[resume]
     \item Les dues isotermes experimentals es compararan amb les obtingudes utilitzant l’equació de gas ideal i l’equació que hagi donat un error més petit a l’apartat anterior. Aquesta comparació la podeu fer en un diagrama $Pv$ utilitzant el full de càlcul anomenat \textbf{Equacions}. Primer cal introduir les dades experimentals en \textbf{DadesGas} i el full de càlcul calcularà la isoterma utilitzant diferents equacions d’estat inclosa la de gas ideal. Finalment es pot graficar en \textbf{GraficEquació} les dades experimentals i les obtingudes mitjançant l’equació d’estat escollida i la de gas ideal. Discutiu el resultat obtingut, especialment en quan a la bondat dels diferents mètode d’estimació de propietats i a les formes que presenten les isotermes.
 \end{enumerate}
