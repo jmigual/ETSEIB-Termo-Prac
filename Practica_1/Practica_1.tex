@@ -263,15 +263,41 @@ Com podem s'observa a la taula, l'equació amb menys error porcentual de mitjana
                 legend cell align = left,
                 cycle list name = exotic,
             ]
-            \addplot+[mark=*, only marks] table[x=v3, y=P2, col sep = semicolon]{experimental_supercritica.csv};
+            \addplot[mark=none, forget plot] {2.4};
             \addplot+[mark=*, only marks] table[x=v3, y=P2, col sep = semicolon]{experimental_subcritica.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{gas_ideal.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{bwr.csv};
-            \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{peng_robinson.csv};
+            \addplot+[smooth, mark=none, style={line width=1.6pt}] table[x=v,y=P,col sep = semicolon]{peng_robinson.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{redlich_kwong.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{soave.csv};
             \addplot+[smooth, mark=none] table[x=v,y=P,col sep = semicolon]{van_der_waals.csv};
-            \legend{Experimental supercrítica, Experimental subcrítica, Gas Ideal, Benedict Webb Rubin, Peng i Robinson, Redlich Kwong, Soave, Van der Waals};
+            \legend{Experimental subcrítica, Gas Ideal, Benedict Webb Rubin, Peng i Robinson, Redlich Kwong, Soave, Van der Waals};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                xlabel = v($cm^3·g^{-1}$),
+                ylabel = P (MPa),
+                xmin = 0, xmax = 9,
+                ymin = 1.5, ymax = 5.5,
+                width=\textwidth, height=0.8\textwidth,
+                legend style={draw=none},
+                restrict y to domain = 0:8,
+                legend cell align = left,
+                cycle list name = exotic,
+            ]
+            \addplot+[mark=*, only marks] table[x=v3, y=P2, col sep = semicolon]{experimental_supercritica.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=GI, col sep = semicolon]{equacions_2.csv};
+            \addplot+[smooth, mark=none, style = {line width = 1.6pt}] table[x=v,y=PR, col sep = semicolon]{equacions_2.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=VdW, col sep = semicolon]{equacions_2.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=RKw, col sep = semicolon]{equacions_2.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=S, col sep = semicolon]{equacions_2.csv};
+            \addplot+[smooth, mark=none] table[x=v,y=BWR, col sep = semicolon]{equacions_2.csv};
+            \legend{Experimental supercrítica, Gas Ideal, Peng i Robinson, Van der Waals, Redlich Kwong, Soave, Benedict Webb Rubin};
         \end{axis}
     \end{tikzpicture}
 \end{figure}
