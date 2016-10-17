@@ -9,6 +9,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{scrextend}
 \usepackage{csvsimple}
 \usepackage{gensymb}
 
@@ -102,6 +103,12 @@ Pel que fa a la \autoref{tab:isocora} (isocora) durant l'experiència es va pode
 	\item \textbf{Els resultats de les experiències isotèrmiques es representen en un diagrama P-v, i es comparen amb les dades tabulades que trobareu a les taules dels annexes o en el full de càlcul anomenat \textbf{Propietats $\boldmath SF_6$ (DiagramaPv)}. Discutiu les diferencies observades entre les dades tabulades i les experimentals.}
 \end{enumerate}
 
+Al gràfic es poden observar les diferents isotermes tabulades i les dues experimentals realitzades a la pràctica. En totes dues isotermes hi ha certs punts destacats de la resta que són deguts a errors en la mesura.
+
+Pel que fa a la isoterma subcrítica es pot veure com hi ha tres parts diferenciades. La primera part és la compressió en estat gasos; la segona, és el procés de liquació on la pressió es manté gairebé constant i la tercera és el procés de compressió en estat líquid. Cal destacar que s'observa com el procés de liquació sembla començar abans del valor teòric. També es pot veure com la tercera part del procés la pressió ha augmentat molt ràpidament respecte la pressió en la segona part.
+
+Pel que fa a la isoterma supercrítica no s'observa cap tram diferenciat i durant l'experiència tampoc es va observar cap canvi d'estat. 
+
 \begin{figure}[H]
     \centering
 	\begin{tikzpicture}
@@ -109,10 +116,10 @@ Pel que fa a la \autoref{tab:isocora} (isocora) durant l'experiència es va pode
                 xlabel = v ($m^3 · kg^{-1}$),
                 ylabel = P (MPa),
                 xmin = 0.0004, xmax = 0.1,
-                ymin = 0, ymax = 6,
+                ymin = 0, ymax = 5.5,
                 xtick = {0.0001, 0.001, 0.01, 0.1},
                 log ticks with fixed point,
-                width=\textwidth, height=0.8\textwidth,
+                width=\textwidth, height=0.6\textwidth,
                 legend style={draw=none},
                 legend cell align = left,
                 cycle list name = color list,
@@ -139,6 +146,54 @@ Pel que fa a la \autoref{tab:isocora} (isocora) durant l'experiència es va pode
 \begin{enumerate}[resume]
     \item \textbf{Els resultats de l’experiència isocòrica es representen en un diagrama $P-T$ i es comparen amb les dades tabulades que trobareu a les taules dels annexes o en el full de càlcul anomenat \textbf{Propietats $SF_6$ (DiagramaPT)}. El procés isocòric si es vol es pot representar també en el diagrama $P-v$. Compareu també el punt crític experimental amb el teòric.}
 \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                xlabel = T(K),
+                ylabel = P(MPa),
+                xmin = 220, xmax = 340,
+                ymin = 0, ymax = 4.5,
+                width = \textwidth, height = 0.6\textwidth,
+                legend style={draw=none},
+                legend cell align = left,
+            ]
+            \addplot[mark=none] table [x=T, y=P, col sep = semicolon]{tabulades_pt.csv};
+            \addplot[mark=*] table [x=T, y=P, col sep = semicolon]{experimental_pt.csv};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+El punt crític teòric del $SF_6$ és de $P_c = 3,759 MPa$ i $T_c = 45,58\degree C$ i el punt crític obtingut a la pràctica ha estat de $T_c = 46 \degree C$ i $P_c = 3,9MPa$.
+
+\begin{addmargin}[3em]{0em}
+    \textbf{Si bé, en una primera aproximació, la corba de vaporització es pot descriure mitjançant l’equació de Clausius-Clapeyron, quan es treballa a pressions elevades, es requereixen equacions més complexes com pot ésser l’obtinguda per Funke \textit{et al.(J. Chem Thermodynamics,} 2001, 34, 735-754) pel SF6: }
+    
+    $$
+    ln\left(\frac{P}{P_c}\right) = \left(\frac{T}{T_c}\right)
+    \left[ -7,12 \left( 1 - \frac{T}{T_c} \right) + 2,04 \left( 1 - \frac{T}{T_c} \right)^{1,5}
+    - 1,55 \left( 1 - \frac{T}{T_c} \right)^{2} - 2,64 \left( 1 - \frac{T}{T_c} \right)^4 \right]
+    $$
+    
+    \textbf{Utilitzant l’equació anterior, per les dades del procés isocòric, calculeu l’error comès en la determinació experimental de la pressió de saturació. Discutiu el resultat obtingut. Aquesta equació la trobareu en el full de càlcul anomenat Propietats$SF_6$ (Psaturació).}
+\end{addmargin}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{rrrr}
+        $T_{exp} (K)$ & $P_{exp} (MPa)$ & $P_{teorica} (MPa)$ & \% error \\
+        \hline
+        \csvreader[
+                late after line=\\, 
+                head to column names, separator=semicolon
+            ]
+            {error_pt.csv}{}{ \T & \Pexp & \Pt & \err }
+    \end{tabular}
+    \caption{Taula Isocora amb error}
+    \label{tab:isocora_err}
+\end{table}
 
 \begin{enumerate}[resume]
     \item \textbf{També es pot treballar el concepte de \emph{títol} i comprovar que el volum d’estats bifàsics es pot descriure a través del títol i dels volums de vapor i líquid saturat. Es calcularà el títol inicial del procés isocòric utilitzant el volum experimental i les dades tabulades dels volums de vapor i líquid saturat.}
