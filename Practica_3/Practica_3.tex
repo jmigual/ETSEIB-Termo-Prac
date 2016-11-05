@@ -1,0 +1,176 @@
+\documentclass[a4paper]{article}
+
+\usepackage[catalan]{babel} % Language 
+\usepackage{fontspec}
+\usepackage[margin=2cm]{geometry}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{gensymb} % For the degree symbol
+
+\pgfplotsset{compat=1.14}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\title{
+	\textsc{Laboratori de Termodinàmica} \\
+	\textsc{Pràctica 3} \\
+	Motor de Stirling \\
+	\large
+	Professor: Jose Luís \\ Grup: 11 }
+\author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
+\date{23 d'octubre de 2016}
+
+\begin{document}
+	
+\maketitle
+
+\section{Objectius}
+
+La pràctica consisteix en fer funcionar i estudiar un motor de combustió externa dissenyat segons el cicle ideal de Stirling. Teòricament, el motor de Stirling pot arribar a funcionar, al igual que un cicle de Carnot, amb el màxim rendiment possible, que és funció només de les temperatures a les que es transfereix la calor des de i a l’entorn.
+
+El motor està suficientment instrumentat per tal de poder conèixer les temperatures dels focus calent i fred, la pressió i volum instantanis i el règim de voltes. Tot això permet, amb l’ajut d’un osci"loscopi, poder determinar el diagrama indicat del qual es pot obtenir el treball i la potència que subministra. A la vegada, subministrant-li treball elèctric pot funcionar com un cicle invers, és a dir, com a màquina de refrigeració.
+
+Amb l’ajuda d’un reòstat de resistència elèctrica variable i dos testers per mesurar el voltatge i la intensitat es determinarà quina part de l’energia mecànica del motor pot transformar-se en energia elèctric útil i quin es el nombre de voltes del motor òptim.
+
+La realització de la pràctica permet, doncs, comparar el funcionament real del cicle com a motor i com a refrigerador amb el que s’aconseguiria amb una màquina que funcionés segons el cicle ideal de Stirling. Els resultats que s’obtenen: potències teòrica i real de funcionament i diversos rendiments de funcionament, constitueixen la base de l’anàlisi termodinàmica tant de motors com d’altres cicles de generació i transformació d’energia.
+
+
+\section{Obtenció i presentació de resultats}
+\subsection{Funcionament com a motor}
+
+\begin{enumerate}
+	\item \textbf{Pels assaigs que hagueu realitzat amb el funcionament com a motor, presenteu una taula que contingui la informació experimental i calculada següent:}
+\end{enumerate}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|r}
+		n &  0,00179 \\ 
+		$T_H (\degree C)$ & 177 \\  
+		$T_L (\degree C)$ & 55,6\\ 
+		$A(cm^2)/A(V^2)$ & 10 \\ 
+		$W_t(J)$ & 0,289 \\ 
+		$\dot{W}_t (W)$ & 2,78 \\
+	\end{tabular}
+\end{table}
+
+Aquests valors s'han pogut calcular a partir de les dades obtingudes, representades al gràfic següent:
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+				xlabel = V(mV), ylabel = P(mV),
+				width=0.8\textwidth, height=0.6\textwidth,
+			]
+			\addplot+[mark size = 0.2, only marks] table[x=V, y=P]{dades/stirling.csv}	;
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Gràfic P-V de tots els cicles registrats}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+				ylabel= Voltatge (mV), xlabel= Temps,
+				width=0.8\textwidth, height=0.6\textwidth,
+			]
+		\addplot+[mark=none,smooth] table[x=T, y=V]{dades/stirling_cicle.csv};
+		\addplot+[mark=none, smooth] table[x=T, y=P]{dades/stirling_cicle.csv};
+		\legend{V, P};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Gràfic d'un cicle del motor}
+\end{figure}
+
+\begin{enumerate}[resume]
+	\item \textbf{Pels assaigs que hagueu realitzat amb el funcionament com a motor, calculeu el treball termodinàmic ideal per cicle $W_t^{id}$ mitjançant l’equació (3). Compareu els valors obtinguts amb els treballs experimentals de la taula anterior i discutiu-ne les diferencies. Comparant els treballs termodinàmics real i ideal es pot definit el rendiment interior del motor:}
+	$$
+	\eta_{int} = \frac{|W_t|}{|W_t^{id}|}
+	$$
+	\textbf{Calculeu aquest rendiment pels diferents règims de funcionament i discutiu els resultats obtinguts.}
+\end{enumerate}
+
+Agafant els valors obtinguts anteriorment i a partir dels proporcionats ($V_{max}$ i $V_{min}$), es pot obtenir el treball ideal $W_t^{id}$ que permet calcular el rendiment interior definit anteriorment.
+$$
+|W_t^{id}| = |Q_H^{id}| - |Q_L^{id}| = 
+nR(T_H - T_L)\ln\left(\frac{V_{max}}{V_{min}}\right) = 
+0,00179·8,31·(177 - 55,6)·\ln\left(\frac{44}{32}\right) = 0,58\ J
+$$
+$$
+\eta_{int} = \frac{|W_t|}{|W_t^{id}|} = \frac{0,289}{0,58} = 46,6\%
+$$
+
+Es pot veure una diferència entr els dos treballs (el rendiment no és 1). Aquesta diferència és deguda a diverses pèrdues que fan que el motor no treballi en el seu estat ideal. Pot ser degut a que la compressió no es fa de manera isocòrica ja que els dos pistons estan en moviment continu (encara que sigui molt poc). A part la compressió no és isotèrmica ja que la temperatura del fluid canvia mentre encara està comprimint-se/descomprimint-se.
+
+\begin{enumerate}[resume]
+	\item \textbf{Pels assaigs que hagueu realitzat amb el funcionament com a motor, calculeu el rendiment $\eta^{id}$ d'un motor Stirling ideal que treballi entre les temperatures $T_H$ i $T_L$ (K) experimentals, mitjançant l’equació (4). El rendiment del cicle real $\eta'$ el determinareu utilitzant el treball termodinàmic per cicle $W_t$ experimental i la calor ideal absorbida per l’aire $Q_H^{id}$ (eq. (1)) (que es pot considerar relativament similar a la calor real), com:}
+	$$
+	\eta'= \frac{|W_t|}{|Q_H^{id}|}
+	$$
+	\textbf{Compareu els rendiments ideals $\eta^{id}$ i reals $\eta'$ del motor i discutiu-ne les diferències. Raoneu el significat i les diferències entre els rendiment calculats mitjançant les equacions (14) i (15).}
+\end{enumerate}
+
+$$
+\eta^{id} = \frac{|W_t^{id}|}{|Q_H^{id}|} = 1 - \frac{T_L}{T_H} = 1 - \frac{328,75}{450,15} = 26,97\%
+$$
+$$
+\eta' = \frac{|W_t|}{|Q_H^{id}|} =
+\frac{|W_t|}{nRT_H\ln\left(\frac{V_{max}}{V_{min}}\right)} = 
+\frac{0,287}{2,137} = 12,57\%
+$$
+
+Com es pot veure també hi ha una diferència entre el treball ideal i el real. Això, tal com s'ha explicat a la pregunta anterior, és degut a que el cicle del motor d'Stirling del laboratori no és ideal i hi ha algunes diferències respecte el cicle d'Stirling ideal.
+
+\subsection{Determinació de la potència elèctrica útil}
+
+\subsection{Funcionament del motor Stirling com a cicle invers}
+
+\begin{enumerate}[resume]
+	\item \textbf{Presenteu una taula que contingui la informació experimental i calculada següent:}
+\end{enumerate}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|r}
+		n &  0,00179 \\ 
+		$T_H (\degree C)$ & 31,8 \\  
+		$T_L (\degree C)$ & 25 \\ 
+		$A(cm^2)/A(V^2)$ & 10 \\ 
+		$W_t(J)$ & -0,083 \\ 
+		$\dot{W}_t (W)$ & -0,277 \\
+	\end{tabular}
+\end{table}
+
+\begin{enumerate}[resume]
+	\item \textbf{Calculeu el coeficient de funcionament ideal $COP^{id}$ d'una màquina frigorífica ideal que treballi entre les temperatures $T_H$ i $T_L$ (K) experimentals, a partir de: }
+	$$
+	COP^{id} = \frac{T_L}{T_H - T_L} = \frac{298,15}{304,95 - 298,15} = 43,846
+	$$
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Determineu el coeficient de funcionament del cicle real $COP’$ utilitzant el treball termodinàmic per cicle $W_t$ experimental i la calor ideal absorbida per l’aire $Q_L^{id}$ (que es pot considerar relativament similar a la calor real), com:}
+	$$
+	COP' = \frac{|Q_L^{id}|}{|W_t|}
+	$$
+	\textbf{Podeu calcular $Q_L^{id}$ segons:}
+	$$
+	Q_L^{id} = nRT_L ln \frac{V_{max}}{V_{min}}
+	$$
+	\textbf{Compareu els coeficients de funcionament ideal $COP^{id}$ i real $COP'$ de la maquina frigorífica i discutiu-ne les diferències.}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item Calculeu el treball ideal $W_t^{id}$ i la potència ideal $\dot{W}_t^{id}$ utilitzant les equacions (3) i (11) vàlides també per a màquines frigorífiques. Compareu els valors de les potències $\dot{W}_t^{id}$ i $\dot{W}_t$ i la potència elèctrica subministrada pel transformador $\dot{W}_e$ que és aproximadament 4W.
+\end{enumerate}
+	
+	
+	
+	
+	
+\end{document}
