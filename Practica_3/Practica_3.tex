@@ -10,8 +10,8 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{gensymb} % For the degree symbol
-
-\pgfplotsset{compat=1.14}
+\listfiles
+\pgfplotsset{compat=1.13}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
@@ -145,6 +145,34 @@ Com es pot veure també hi ha una diferència entre el treball ideal i el real. 
 		$\dot{W}_t (W)$ & -0,277 \\
 	\end{tabular}
 \end{table}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel = V(mV), ylabel = P(mV),
+	width=0.8\textwidth, height=0.6\textwidth,
+	]
+	\addplot+[mark size = 0.2, only marks] table[x=V, y=P]{dades/stirling_invers.csv}	;
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Gràfic P-V de tots els cicles inversos registrats}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	ylabel= Voltatge (mV), xlabel= Temps,
+	width=0.8\textwidth, height=0.6\textwidth,
+	]
+	\addplot+[mark=none,smooth] table[x=T, y=V]{dades/stirling_invers_cicle.csv};
+	\addplot+[mark=none, smooth] table[x=T, y=P]{dades/stirling_invers_cicle.csv};
+	\legend{V, P};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{Gràfic d'un cicle invers del motor}
+\end{figure}
 
 \begin{enumerate}[resume]
 	\item \textbf{Calculeu el coeficient de funcionament ideal $COP^{id}$ d'una màquina frigorífica ideal que treballi entre les temperatures $T_H$ i $T_L$ (K) experimentals, a partir de: }
