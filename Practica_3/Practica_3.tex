@@ -103,7 +103,8 @@ nR(T_H - T_L)\ln\left(\frac{V_{max}}{V_{min}}\right) =
 0,00179·8,31·(177 - 55,6)·\ln\left(\frac{44}{32}\right) = 0,58\ J
 $$
 $$
-\eta_{int} = \frac{|W_t|}{|W_t^{id}|} = \frac{0,289}{0,58} = 46,6\%
+\eta_{int} = \frac{|W_t|}{|W_t^{id}|} = 
+\frac{0,289}{0,58} = \boxed{46,6\%}
 $$
 
 Es pot veure una diferència entr els dos treballs (el rendiment no és 1). Aquesta diferència és deguda a diverses pèrdues que fan que el motor no treballi en el seu estat ideal. Pot ser degut a que la compressió no es fa de manera isocòrica ja que els dos pistons estan en moviment continu (encara que sigui molt poc). A part la compressió no és isotèrmica ja que la temperatura del fluid canvia mentre encara està comprimint-se/descomprimint-se.
@@ -117,12 +118,13 @@ Es pot veure una diferència entr els dos treballs (el rendiment no és 1). Aque
 \end{enumerate}
 
 $$
-\eta^{id} = \frac{|W_t^{id}|}{|Q_H^{id}|} = 1 - \frac{T_L}{T_H} = 1 - \frac{328,75}{450,15} = 26,97\%
+\eta^{id} = \frac{|W_t^{id}|}{|Q_H^{id}|} = 
+1 - \frac{T_L}{T_H} = 1 - \frac{328,75}{450,15} = \boxed{26,97\%}
 $$
 $$
 \eta' = \frac{|W_t|}{|Q_H^{id}|} =
 \frac{|W_t|}{nRT_H\ln\left(\frac{V_{max}}{V_{min}}\right)} = 
-\frac{0,287}{2,137} = 12,57\%
+\frac{0,287}{2,137} = \boxed{12,57\%}
 $$
 
 Com es pot veure també hi ha una diferència entre el treball ideal i el real. Això, tal com s'ha explicat a la pregunta anterior, és degut a que el cicle del motor d'Stirling del laboratori no és ideal i hi ha algunes diferències respecte el cicle d'Stirling ideal.
@@ -177,7 +179,7 @@ Com es pot veure també hi ha una diferència entre el treball ideal i el real. 
 \begin{enumerate}[resume]
 	\item \textbf{Calculeu el coeficient de funcionament ideal $COP^{id}$ d'una màquina frigorífica ideal que treballi entre les temperatures $T_H$ i $T_L$ (K) experimentals, a partir de: }
 	$$
-	COP^{id} = \frac{T_L}{T_H - T_L} = \frac{298,15}{304,95 - 298,15} = 43,846
+	COP^{id} = \frac{T_L}{T_H - T_L} = \frac{298,15}{304,95 - 298,15} = \boxed{43,846}
 	$$
 \end{enumerate}
 
@@ -193,11 +195,61 @@ Com es pot veure també hi ha una diferència entre el treball ideal i el real. 
 	\textbf{Compareu els coeficients de funcionament ideal $COP^{id}$ i real $COP'$ de la maquina frigorífica i discutiu-ne les diferències.}
 \end{enumerate}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|r}
+		n & 0,00179 \\
+		R & 8,31 \\
+		$T_L$ & 298 K\\
+		$V_{max}$ & 44 $cm^3$ \\
+		$V_{min}$ & 32 $cm^3$ \\
+		$W_t$ & -0,083 W
+	\end{tabular}
+\end{table}
+
+$$
+Q_L^{id} = nRT_L ln \frac{V_{max}}{V_{min}} =
+0,00179·8,31·298·\ln\left(\frac{44}{32}\right) = \boxed{1,41 J}
+$$
+$$
+COP' = \frac{|Q_L^{id}|}{|W_t|} = \frac{1,41}{0,083} = \boxed{17}
+$$
+
+El $COP'$ representa menys del $40\%$ del $COP^{id}$. Això és causat per múltiples pèrdues com ara la fricció o l'absorció de calor per part del sistema en les altres 3 fases.
+
 \begin{enumerate}[resume]
-	\item Calculeu el treball ideal $W_t^{id}$ i la potència ideal $\dot{W}_t^{id}$ utilitzant les equacions (3) i (11) vàlides també per a màquines frigorífiques. Compareu els valors de les potències $\dot{W}_t^{id}$ i $\dot{W}_t$ i la potència elèctrica subministrada pel transformador $\dot{W}_e$ que és aproximadament 4W.
+	\item \textbf{Calculeu el treball ideal $W_t^{id}$ i la potència ideal $\dot{W}_t^{id}$ utilitzant les equacions (3) i (11) vàlides també per a màquines frigorífiques. Compareu els valors de les potències $\dot{W}_t^{id}$ i $\dot{W}_t$ i la potència elèctrica subministrada pel transformador $\dot{W}_e$ que és aproximadament 4W.}
 \end{enumerate}
-	
-	
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|r}
+		n & 0,00179 \\
+		R & 8,31\\
+		$T_L$ & 298 K\\
+		$T_H$ & 304,8K\\
+		$V_{max}$ & 44 $cm^3$ \\
+		$V_{min}$ & 32 $cm^3$ \\
+		$\omega$ & 200 rpm
+	\end{tabular}
+\end{table}
+
+$$
+nR(T_H - T_L)\ln\left(\frac{V_{max}}{V_{min}}\right) = 
+0,00179·8,31·(304,8 - 298)·\ln\left(\frac{44}{32}\right) = 0,032 J
+$$
+$$
+\dot{W}_t^{id} = \frac{rpm·W_t^{id}}{60} = \frac{200·0,032}{60} = 0,109 W
+$$
+$$
+\dot{W}_t = 0,227 W \qquad \dot{W}_e = 4 W
+$$
+
+S'observa que $ \dot{W}_e > \dot{W}_t > \dot{W}_t^{id} $. 
+
+La potència perduda entre $\dot{W}_e$ i $\dot{W}_t$ és deguda a causes externes del al fluid com per exemple el rendiment del motor elèctric.
+
+La potència perduda entre $\dot{W}_t$ i $\dot{W}_t^{id}$ és deguda a causes internes del propi sistema com ara calors absorbides i idealitzacions suposades que no es compleixen com ara que el cicle real no presenta dues isocòriques (com es pot veure al gràfic P-V de l'apartat 4).
 	
 	
 	
