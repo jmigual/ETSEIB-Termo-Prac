@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+
+\usepackage[catalan]{babel} % Language 
+\usepackage{fontspec}
+\usepackage[margin=2cm]{geometry}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{gensymb} % For the degree symbol
+
+\pgfplotsset{compat=1.13}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\title{
+	\textsc{Laboratori de Termodinàmica} \\
+	\textsc{Pràctica 4} \\
+	Cicle de refrigeració per compressió de vapor amb R-134a \\
+	\large
+	Professor: Jose Luís \\ Grup: 11 }
+\author{Jo-an Marcè Igual \and Esteve Tarragó Sanchís}
+\date{13 de novembre de 2016}
+
+\begin{document}
+\maketitle
+
+\section{Objectius}
+
+\begin{itemize}
+	\item Comprendre el funcionament d’un cicle de refrigeració.
+	\item Conèixer algunes aplicacions molt usuals de cicles de refrigeració.
+	\item Veure quines variables experimentals cal mesurar per tal de poder conèixer l’estat de funcionament d’un cicle frigorífic.
+	\item Comprendre i utilitzar el diagrama P-h per a l’estudi del cicle
+	\item Determinar la potencia tèrmica frigorífica o calorífica que proporciona el cicle i mesurar la potència elèctrica consumida necessària pel seu funcionament.
+	\item Interpretar les dades que subministren els fabricants de compressors per conèixer les característiques dels cicles frigorífics.
+	\item A partir de les dades experimentals es faran balanços de matèria i energia en els diferents elements de la insta\l. lació i es determinarà el coeficient de funcionament o d’eficàcia (COP) de la insta\l. lació.
+\end{itemize}
+
+\section{Presentació de resultats}
+
+\textbf{S'ha de presentar}
+\begin{enumerate}
+	\item \textbf{Diagrama \emph{P-h} del cicle representat}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item \textbf{Les taules anteriorment citades en l'apartat de presa de dades amb els valors obtinguts experimentalment (que es troben també al full de resultats).}
+\end{enumerate}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|rrr}
+		Refrigerant & Pressió manomètrica (bar) & Pressió absoluta (bar) & Temperatura (ºC) \\
+		\hline
+		Sortida evaporador (1) & & & \\
+		Entrada compressor (2) & & & \\
+		Sortida compressor (3) & & & \\
+		Entrada condensador (4) & & & \\
+		Sortida condensador (5) & & & \\
+		Entrada vàlvula (6) & & & \\
+		Entrada evaporador (7) & & & \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|r}
+		Refrigerant & Pressió manomètrica (bar) \\
+		\hline
+		Entrada compressor & \\
+		Sortida compressor & \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|rr}
+		Aigua & Cabal (l/h) & Temperatura (ºC) \\
+		\hline
+		Entrada evaporador & & \\
+		Sortida evaporador & & \\
+		Entrada condensador & & \\
+		Sortida condensador & & \\
+	\end{tabular}
+\end{table}
+
+\begin{enumerate}[resume]
+	\item \textbf{La taula següent a partir de les dades de l'apartat anterior, (aquesta taula es troba també en el full de resultats). Indiqueu en valor absolut el valor de les potències calorífica i frigorífica.}
+\end{enumerate}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{rl|r}
+		1 & Potència calorífica (costat aigua) en W & \\
+		2 & Potència frigorífica (costat aigua) en W & \\
+		3 & Diferència dels dos valors anteriors en W & \\
+		4 & Potència elèctrica del vatímetre en W & \\
+		5 & Temperatura condensació (del manòmetre) ºC & \\
+		6 & Temperatura evaporació (del manòmetre) ºC & \\
+		7 & Pot Frigorífica del fabricant (taules) en W & \\
+		8 & Pot elèctrica del fabricant (taules) en W & \\
+		9 & COP calculat com (valor 2) / (valor 4) & \\
+		10 & COP calculat com (valor 7) / (valor 8) & \\
+	\end{tabular}
+\end{table}
+
+\begin{enumerate}[resume]
+	\item \textbf{Un comentari o anàlisi sobre els resultats obtinguts i la coherència dels càlculs efectuats}
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
