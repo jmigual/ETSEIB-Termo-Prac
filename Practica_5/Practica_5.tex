@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}	% For smaller margins
+\usepackage[catalan]{babel} 		% Catalan language 
+\usepackage{fontspec}				% utf-8 support
+
+\usepackage{amsmath}				% Math symbols
+\usepackage{float}					% Better positioning 
+\usepackage[hidelinks]{hyperref}	% To hide some links
+\usepackage{pgfplots}				% Useful to plot data tables
+\usepackage{enumitem}				% To use resume in enumerate
+\usepackage{multirow}				% Multirow
+\usepackage{gensymb} 				% For the degree symbol
+\usepackage{graphicx}				% To include images
+\usepackage{array}					% To alter column specification
+\usepackage{pgfplotstable}			% To add CSV as tables
+
+\pgfplotsset{compat=1.13}
+
+\newenvironment{questionenum}{%
+	\setlist[enumerate]{resume}
+	\restartlist{enumerate}
+	\newcommand{\question}[1]{
+		\begin{enumerate}
+			\item\bfseries ##1
+		\end{enumerate}
+}}{%
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\title{
+	\textsc{Laboratori de Termodinàmica} \\
+	\textsc{Pràctica 5} \\
+	Aire humit \\
+	\large
+	Professor: Jose Luís \\ Grup: 11 }
+\author{Joan Marcè Igual \and Esteve Tarragó Sanchís}
+\date{13 de novembre de 2016}
+
+\begin{document}
+\maketitle
+
+\section{Objectius}
+
+La pràctica té per objectiu la determinació experimental de les propietats d'estat de l'aire humit i l'estudi d'alguns processos de condicionament d'aire com són l'escalfament i el refredament sensible. Es treballarà amb un equip de condicionament d'aire convencional amb compressor inverter i refrigerant R-410A accessible i instrumentat adequadament (dissenyat com equip didàctic). Els estats d'aire humit es determinaran amb un psicròmetre i els processos es visualitzaran en un diagrama psicromètric que també s'utilitzarà per a determinar la resta de paràmetres característics de l'aire: humitat relativa, humitat absoluta, volum específic, entalpia, etc. Finalment es realitzaran els balanços de matèria i energia dels processos estudiats.
+
+\section{Presentació de resultats}
+
+\begin{questionenum}
+	\question{Presenteu una taula amb les propietats de l'aire del laboratori. Compareu els diferents sistemes de mesura emprats.}
+	
+	\question{Establiu les condicions termodinàmiques en què es troba el refrigerant dins de la unitat d'aire condicionat quan aquesta no es troba en funcionament.}
+	
+	\question{Presenteu dues taules (bateria interior i exterior) que continguin les temperatures, les humitats relatives i les velocitats determinades a diferents punts de la sortida de les bateries i els valors promig calculats.}
+	
+	\begin{table}[H]
+		\centering
+		\pgfplotstabletypeset[
+			every head row/.style={ 
+				after row=\hline	
+			},
+			create col/expr accum={\pgfmathaccuma+1}{0},
+			display columns/0/.style={column name = T (ºC)},
+			display columns/1/.style={column name = $\phi$ (\%)},
+			display columns/2/.style={column name = $\vec{v}$ (m/s)},
+			use comma,
+			dec sep align
+		]{data/unitat-interior.csv}
+	\end{table}
+\end{questionenum}
+
+\end{document}
