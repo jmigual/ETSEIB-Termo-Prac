@@ -14,6 +14,9 @@
 \usepackage{graphicx}				% To include images
 \usepackage{array}					% To alter column specification
 \usepackage{pgfplotstable}			% To add CSV as tables
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.misc}
 
 \pgfplotsset{compat=1.13}
 
@@ -85,16 +88,49 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
 		\end{minipage}
 	\end{table}
 	
-	\question{Establiu les condicions termodinàmiques en què es troba el refrigerant dins de la unitat d'aire condicionat quan aquesta no es troba en funcionament.}
-	
-	Quan l'equip no es troba en funcionament les pressions són 
-	
 	\question{Presenteu dues taules (bateria interior i exterior) que continguin les temperatures, les humitats relatives i les velocitats determinades a diferents punts de la sortida de les bateries i els valors promig calculats.}
 	
-	\begin{table}[H]
+	\begin{figure}[H]
 		\centering
-		\pgfplotstabletypeset[columns={new,T,H,v}]{data/unitat-interior.csv}
-		\caption{Dades de la bateria interior}
+		\begin{tikzpicture}[auto]
+			\draw[line width=0.9mm] (-1,1) rectangle (5*1.5 + 1, -2.5);
+			\draw[line width=0.9mm] (-1,1.5) rectangle (5*1.5 + 1, -3);
+			\draw[rounded corners=15pt] (-1.8,2) rectangle (5*1.5 + 1.8, -3.5);
+			\foreach \i in {1,...,20}{
+				\draw[thin] (-1, {-3.5*\i/20 + 1}) -- (5*1.5 + 1, {-3.5*\i/20 + 1});
+			}
+			\foreach \i in {1,...,12}{
+				\node[fill=white,circle,draw,minimum size=2.5em] at ({mod(\i - 1, 6)*1.5}, {-1.5*int((\i - 1)/6)}){\i};
+			}
+		\end{tikzpicture}
+		\caption{Esquema de la sortida d'aire a la unitat interior i dels punts de mesura recomanats}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\foreach \i in {0,45,...,360} 
+				\draw[gray] (0,0) -- (\i:4);
+			\draw (0,0) circle (4);
+			\draw (0,0) circle (1);
+			\foreach \i in {1,...,16} {
+				\node[fill=white, circle, draw, minimum size=2.5em]
+					at ({90-mod(\i - 1, 8)*45}:{3 - int((\i - 1)/8)}){\i};
+			}
+		\end{tikzpicture}
+		\caption{Esquema de la sortida d'airea a la unitat exterior i dels punts de mesura recomanats.}
+	\end{figure}
+	
+	\begin{table}[H]
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\pgfplotstabletypeset[columns={new,T,H,v}]{data/unitat-interior.csv}
+			\caption{Dades de la bateria interior}
+		\end{minipage}
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\pgfplotstabletypeset[columns={new,T,H,v}]{data/unitat-exterior.csv}
+			\caption{Dades de la bateria interior}
+		\end{minipage}
 	\end{table}
 
 	\question{Representeu al diagrama psicomètric els processos que tenen lloc a les dues bateries i determineu els volums específics, les humitats absolutes i les entalpies a la entrada i a la sortida de les bateries. Presenteu una taula que contingui aquesta informació. Discutiu si s'escau els valors de les humitats absolutes.}
