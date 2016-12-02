@@ -13,8 +13,9 @@
 \usepackage{gensymb} 				% For the degree symbol
 \usepackage{graphicx}				% To include images
 \usepackage{array}					% To alter column specification
+\usepackage{tikz}					% Draw images
+\usepackage{pgfplots}				% Add graphs
 \usepackage{pgfplotstable}			% To add CSV as tables
-\usepackage{tikz}
 
 \usetikzlibrary{shapes.misc}
 
@@ -109,7 +110,7 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
 		\centering
 		\begin{tikzpicture}
 			\foreach \i in {0,45,...,360} 
-				\draw[gray] (0,0) -- (\i:4);
+				\draw[black!30] (0,0) -- (\i:4);
 			\draw (0,0) circle (4);
 			\draw (0,0) circle (1);
 			\foreach \i in {1,...,16} {
@@ -134,6 +135,12 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
 	\end{table}
 
 	\question{Representeu al diagrama psicomètric els processos que tenen lloc a les dues bateries i determineu els volums específics, les humitats absolutes i les entalpies a la entrada i a la sortida de les bateries. Presenteu una taula que contingui aquesta informació. Discutiu si s'escau els valors de les humitats absolutes.}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{images/psychrometric}
+        \caption{Diagrama psicromètric a pressió atmosfèrica}
+    \end{figure}
 	
 	\question{Determineu el flux màssic d'aire que circula per les dues bateries i les potències frigorífica i calorífica utilitzant les equacions (1) i (2) i les dades extretes del diagrama psicomètric. Discutiu els resultats obtinguts i compareu-los amb les dades facilitades pel fabricant.}
 	
