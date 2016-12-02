@@ -17,6 +17,17 @@
 
 \pgfplotsset{compat=1.13}
 
+\pgfplotstableset{
+	create on use/new/.style={create col/expr accum={\pgfmathaccuma+1}{0}},
+	every head row/.style={after row=\hline},
+	display columns/0/.style={column name = Posició },
+	display columns/1/.style={column name = T (ºC)},
+	display columns/2/.style={column name = $\phi$ (\%)},
+	display columns/3/.style={column name = $\vec{v}$ (m/s)},
+	use comma,
+	dec sep align
+}
+
 \newenvironment{questionenum}{%
 	\setlist[enumerate]{resume}
 	\restartlist{enumerate}
@@ -51,24 +62,48 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
 \begin{questionenum}
 	\question{Presenteu una taula amb les propietats de l'aire del laboratori. Compareu els diferents sistemes de mesura emprats.}
 	
+	\begin{table}[H]
+		\centering
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\begin{tabular}{rr}
+				$T_{\text{bulb sec}}$ (ºC) & $\phi$ (\%) \\
+				\hline
+				19,8 & 55,6 
+			\end{tabular}
+			\caption{Dades obtingudes amb l'\textbf{higròmetre}}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\begin{tabular}{rrr}
+				$T_{\text{bulb sec}}$ (ºC) & $T_{\text{bulb humit}}$ (ºC) & $\phi$ (\%) \\
+				\hline
+				22,5 & 26 & 51
+			\end{tabular}
+			\caption{Dades obtingudes amb el \textbf{psicròmetre}}
+		\end{minipage}
+	\end{table}
+	
 	\question{Establiu les condicions termodinàmiques en què es troba el refrigerant dins de la unitat d'aire condicionat quan aquesta no es troba en funcionament.}
+	
+	Quan l'equip no es troba en funcionament les pressions són 
 	
 	\question{Presenteu dues taules (bateria interior i exterior) que continguin les temperatures, les humitats relatives i les velocitats determinades a diferents punts de la sortida de les bateries i els valors promig calculats.}
 	
 	\begin{table}[H]
 		\centering
-		\pgfplotstabletypeset[
-			every head row/.style={ 
-				after row=\hline	
-			},
-			create col/expr accum={\pgfmathaccuma+1}{0},
-			display columns/0/.style={column name = T (ºC)},
-			display columns/1/.style={column name = $\phi$ (\%)},
-			display columns/2/.style={column name = $\vec{v}$ (m/s)},
-			use comma,
-			dec sep align
-		]{data/unitat-interior.csv}
+		\pgfplotstabletypeset[columns={new,T,H,v}]{data/unitat-interior.csv}
+		\caption{Dades de la bateria interior}
 	\end{table}
+
+	\question{Representeu al diagrama psicomètric els processos que tenen lloc a les dues bateries i determineu els volums específics, les humitats absolutes i les entalpies a la entrada i a la sortida de les bateries. Presenteu una taula que contingui aquesta informació. Discutiu si s'escau els valors de les humitats absolutes.}
+	
+	\question{Determineu el flux màssic d'aire que circula per les dues bateries i les potències frigorífica i calorífica utilitzant les equacions (1) i (2) i les dades extretes del diagrama psicomètric. Discutiu els resultats obtinguts i compareu-los amb les dades facilitades pel fabricant.}
+	
+	\question{Determineu el cabal volumètric a la sortida de les dues bateries utilitzant l'equació (3) i compareu els resultats obtinguts amb les dades facilitades pel fabricant.}
+	
+	\question{En cas d'haver determinat dades de l'aire en diferents condicions de funcionament de la màquina, presenteu els resultats de tots els règims de funcionament i discutiu-ne les diferències.}
 \end{questionenum}
 
 \end{document}
