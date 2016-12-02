@@ -4,7 +4,6 @@
 \usepackage[catalan]{babel} 		% Catalan language 
 \usepackage{fontspec}				% utf-8 support
 
-\usepackage{amsmath}				% Math symbols
 \usepackage{float}					% Better positioning 
 \usepackage[hidelinks]{hyperref}	% To hide some links
 \usepackage{pgfplots}				% Useful to plot data tables
@@ -16,13 +15,17 @@
 \usepackage{tikz}					% Draw images
 \usepackage{pgfplots}				% Add graphs
 \usepackage{pgfplotstable}			% To add CSV as tables
+\usepackage{amsmath}				% Math symbols
+\usepackage{amssymb}
 
 \usetikzlibrary{shapes.misc}
 
 \pgfplotsset{compat=1.13}
 
 \pgfplotstableset{
-	create on use/new/.style={create col/expr accum={\pgfmathaccuma+1}{0}},
+	create on use/new/.style={
+        create col/expr accum={\pgfmathaccuma+1}{0},
+        every last row/.style={string type}},
 	every head row/.style={after row=\hline},
 	display columns/0/.style={column name = Posició },
 	display columns/1/.style={column name = T (ºC)},
@@ -133,6 +136,20 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
 			\caption{Dades de la bateria interior}
 		\end{minipage}
 	\end{table}
+
+    Així doncs per la bateria interior els valors mitjans són els següents:
+    \begin{align*}
+        & T = 36,3 \degree C \\
+        & \phi = 20,3 \% \\
+        & \vec{v} = 2,4 m/s
+    \end{align*}
+    
+    Per la bateria exterior els valors mitjans són els següents:
+    \begin{align*}
+        & T = 16 \degree C \\
+        & \phi  = 74,2 \% \\
+        & \vec{v} = 2,7 m/s
+    \end{align*}
 
 	\question{Representeu al diagrama psicomètric els processos que tenen lloc a les dues bateries i determineu els volums específics, les humitats absolutes i les entalpies a la entrada i a la sortida de les bateries. Presenteu una taula que contingui aquesta informació. Discutiu si s'escau els valors de les humitats absolutes.}
     
