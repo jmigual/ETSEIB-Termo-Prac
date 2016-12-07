@@ -35,6 +35,8 @@
 	dec sep align
 }
 
+\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
+
 \newenvironment{questionenum}{%
 	\setlist[enumerate]{resume}
 	\restartlist{enumerate}
@@ -164,10 +166,56 @@ La pràctica té per objectiu la determinació experimental de les propietats d'
     \end{figure}
 	
 	\question{Determineu el flux màssic d'aire que circula per les dues bateries i les potències frigorífica i calorífica utilitzant les equacions (1) i (2) i les dades extretes del diagrama psicomètric. Discutiu els resultats obtinguts i compareu-los amb les dades facilitades pel fabricant.}
+    
+    $$
+    \dot{Q} = \dot{m} (h_s - h_e)
+    $$
+    $$
+    \dot{m} = \frac{A·\vec{v}}{v}
+    $$
 	
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{l|rrrrr}
+            & Volums específics ($\frac{m^3}{kg}$) & Àrea ($m^2$) & Velocitat ($\frac{m}{s}$) & $\dot{m}$ & h ($\frac{kJ}{kg a.s.}$) \\
+            \hline
+            Interior & 0,89 & 0,026 & 2,4 & 0,07 & 57 \\
+            Exterior & 0,83 & 0,145 & 2,7 & 0,47 & 38 \\
+            Ambient  & - & - & - & - & 44 
+        \end{tabular}
+    \end{table}
+    
+    $$
+    \dot{Q}_{calorífica} = 0,07·(57 - 44) = \boxed{0,91 \ kW}
+    $$
+    $$
+    \dot{Q}_{frigorífica} = 0,47·(38 - 44) = \boxed{-2,83 \ kW}
+    $$
+    
+    Es pot observar que les potències estan dins del rang que dona el fabricant to i que la potència calorífica està a l'extrem d'aquest.
+    
+    $$
+    \dot{m} = \frac{A·\vec{v}}{v}
+    $$
+    \begin{align*}
+        & v_{\text{aire interior}} = 0,89 \ m^3/kg \\
+        & v_{\text{aire exterior}} = 0,83 \ m^3/kg
+    \end{align*}
+    \begin{align*}
+        & A_{\text{interior}} = \frac{0,4 \cdot 0,13}{2} = 0,026 \ m^2 \\
+        & A_{\text{exterior}} = \pi \cdot (0,2225^2 - 0,0775^2) = 0,145 \ m^2
+    \end{align*}
+    
+    
+    
 	\question{Determineu el cabal volumètric a la sortida de les dues bateries utilitzant l'equació (3) i compareu els resultats obtinguts amb les dades facilitades pel fabricant.}
-	
-	\question{En cas d'haver determinat dades de l'aire en diferents condicions de funcionament de la màquina, presenteu els resultats de tots els règims de funcionament i discutiu-ne les diferències.}
+    
+    \begin{align*}
+        & \dot{V}_{\text{interior}} = A_{\text{interior}} \cdot \vec{v}_{\text{interior}} = 0,026 \cdot 2,4 =  \boxed{0,062 \ m^3/s} \\
+        & \dot{V}_{\text{exterior}} = A_{\text{exterior}} \cdot \vec{v}_{\text{exterior}} = 0,145 \cdot 2,7 = \boxed{0,392 \ m^3/s}
+    \end{align*}
+    
+    El cabal volumètric d'escalfament és superior al de les especificacions i el de refredament lleugerament inferior. Aquests errors poden ser causats pel càlcul del cabal que està afectat per errors en l'estimació de l'àrea i la presa de velocitats.
 \end{questionenum}
 
 \end{document}
